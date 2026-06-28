@@ -12,101 +12,101 @@
 
 ### Subtareas
 
-#### 1.1 Crear el proyecto Angular
-- Crear un nuevo proyecto Angular con `ng new habit-tracker-frontend`
-- Elegir: sin routing (lo añadimos manual), SCSS como preprocesador
-- Instalar Angular 17+ con standalone components activado por defecto
-- Verificar que la app arranca con `ng serve`
+#### 1.1 Crear el proyecto Angular ✅
+- [x] Crear un nuevo proyecto Angular con `ng new habit-tracker-frontend`
+- [x] Elegir: sin routing (lo añadimos manual), SCSS como preprocesador
+- [x] Instalar Angular 17+ con standalone components activado por defecto
+- [x] Verificar que la app arranca con `ng serve`
 
-#### 1.2 Instalar dependencias del frontend
-- Instalar Chart.js y su wrapper para Angular: `ng2-charts`
-- Instalar Lucide Icons: `lucide-angular`
-- Añadir las fuentes Nunito y Nunito Sans de Google Fonts en `index.html`
+#### 1.2 Instalar dependencias del frontend ✅
+- [x] Instalar Chart.js y su wrapper para Angular: `ng2-charts`
+- [x] Instalar Lucide Icons: `lucide-angular`
+- [x] Añadir las fuentes Nunito y Nunito Sans de Google Fonts en `index.html`
 - No instalar nada más por ahora
 
-#### 1.3 Crear la estructura de carpetas del frontend
-- Crear las carpetas: `components/habits`, `components/stats`, `components/chat`, `components/shared`, `services`, `models`, `pages`
-- Crear un archivo `README.md` dentro de cada carpeta explicando para qué sirve
+#### 1.3 Crear la estructura de carpetas del frontend ✅
+- [x] Crear las carpetas: `components/habits`, `components/stats`, `components/chat`, `components/shared`, `services`, `models`, `pages`
+- [x] Crear un archivo `README.md` dentro de cada carpeta explicando para qué sirve
 
-#### 1.4 Crear el proyecto Java con Maven
-- Crear un proyecto Maven estándar con Java 17
-- Configurar el `pom.xml` con las dependencias:
+#### 1.4 Crear el proyecto Java con Maven ✅
+- [x] Crear un proyecto Maven estándar con Java 17
+- [x] Configurar el `pom.xml` con las dependencias:
   - `javax.servlet-api` (o `jakarta.servlet-api`) para los Servlets
   - `gson` para parsear y generar JSON
   - `postgresql` driver JDBC para conectar con la BD
-- El empaquetado del proyecto es `war` para desplegarlo en Tomcat
-- Nombre del artefacto: `habit-tracker-backend`
-- Verificar que el proyecto compila con `mvn clean package`
+- [x] El empaquetado del proyecto es `war` para desplegarlo en Tomcat
+- [x] Nombre del artefacto: `habit-tracker-backend`
+- [x] Verificar que el proyecto compila con `mvn clean package`
 
-#### 1.5 Crear la estructura de paquetes del backend
-- Crear los paquetes: `servlet`, `service`, `dao`, `model`, `dto`, `util`
-- Crear una clase vacía de ejemplo en cada paquete con un comentario explicando para qué sirve ese paquete
-- Crear la clase `DatabaseConnection.java` en el paquete `util` con un método estático `getConnection()` que devuelve una `Connection` JDBC
+#### 1.5 Crear la estructura de paquetes del backend ✅
+- [x] Crear los paquetes: `servlet`, `service`, `dao`, `model`, `dto`, `util`
+- [x] Crear una clase vacía de ejemplo en cada paquete con un comentario explicando para qué sirve ese paquete
+- [x] Crear la clase `DatabaseConnection.java` en el paquete `util` con un método estático `getConnection()` que devuelve una `Connection` JDBC
 
-#### 1.6 Configurar la base de datos PostgreSQL
-- Crear la base de datos en PostgreSQL: `habit_tracker_db`
-- Crear un usuario de base de datos con contraseña para la app (no usar el usuario root/postgres)
-- Guardar la URL, usuario y contraseña en un archivo `db.properties` dentro de `src/main/resources`
-- En `DatabaseConnection.java`, leer ese archivo con `Properties` y devolver la conexión
-- Verificar que la conexión funciona ejecutando una query simple de prueba
-- Instalar Apache Tomcat 10 localmente para desplegar el proyecto
+#### 1.6 Configurar la base de datos PostgreSQL ✅
+- [x] Crear la base de datos en PostgreSQL: `habit_tracker_db`
+- [x] Crear un usuario de base de datos con contraseña para la app (no usar el usuario root/postgres)
+- [x] Guardar la URL, usuario y contraseña en un archivo `db.properties` dentro de `src/main/resources`
+- [x] En `DatabaseConnection.java`, leer ese archivo con `Properties` y devolver la conexión
+- [x] Verificar que la conexión funciona ejecutando una query simple de prueba
+- [x] Instalar Apache Tomcat 10 localmente para desplegar el proyecto
 
 
 ---
 
-## TAREA 2 — Registro e inicio de sesión de usuarios
+## TAREA 2 — Registro e inicio de sesión de usuarios ✅
 
 **Historia**: Como usuaria, quiero poder crear una cuenta y acceder a la aplicación con mi email y contraseña para que mis hábitos sean privados y personales.
 
 ### Subtareas
 
-#### 2.1 Crear la tabla de usuarios en PostgreSQL
-- Crear el script SQL para la tabla `users` con los campos: `id`, `name`, `email`, `password_hash`, `avatar_emoji`, `created_at`
-- Ejecutar el script en la base de datos
-- Añadir comentarios en el SQL explicando cada campo
+#### 2.1 Crear la tabla de usuarios en PostgreSQL ✅
+- [x] Crear el script SQL para la tabla `users` con los campos: `id`, `name`, `email`, `password_hash`, `avatar_emoji`, `created_at`
+- [x] Ejecutar el script en la base de datos
+- [x] Añadir comentarios en el SQL explicando cada campo
 
-#### 2.2 Crear la clase User y su DAO en Java
-- Crear la clase `User.java` en el paquete `model` con los campos: `id`, `name`, `email`, `passwordHash`, `avatarEmoji`, `createdAt`
-- Crear la clase `UserDAO.java` en el paquete `dao` con los métodos:
+#### 2.2 Crear la clase User y su DAO en Java ✅
+- [x] Crear la clase `User.java` en el paquete `model` con los campos: `id`, `name`, `email`, `passwordHash`, `avatarEmoji`, `createdAt`
+- [x] Crear la clase `UserDAO.java` en el paquete `dao` con los métodos:
   - `findByEmail(String email)` — busca un usuario por email usando JDBC
   - `save(User user)` — inserta un nuevo usuario en la BD
-- Usar `PreparedStatement` en todas las queries para evitar SQL Injection
-- Comentar cada método
+- [x] Usar `PreparedStatement` en todas las queries para evitar SQL Injection
+- [x] Comentar cada método
 
-#### 2.3 Crear los DTOs y el servicio de usuarios
-- Crear `UserRegisterDTO.java` (campos: name, email, password)
-- Crear `UserLoginDTO.java` (campos: email, password)
-- Crear `UserResponseDTO.java` (campos: id, name, email, avatarEmoji — sin contraseña)
-- Crear `UserService.java` con los métodos `register` y `login`
-- El método `register` encripta la contraseña antes de guardarla. Usar `BCrypt` (añadir la librería `jbcrypt` al `pom.xml`)
-- Comentar cada método
+#### 2.3 Crear los DTOs y el servicio de usuarios ✅
+- [x] Crear `UserRegisterDTO.java` (campos: name, email, password)
+- [x] Crear `UserLoginDTO.java` (campos: email, password)
+- [x] Crear `UserResponseDTO.java` (campos: id, name, email, avatarEmoji — sin contraseña)
+- [x] Crear `UserService.java` con los métodos `register` y `login`
+- [x] El método `register` encripta la contraseña antes de guardarla. Usar `BCrypt` (añadir la librería `jbcrypt` al `pom.xml`)
+- [x] Comentar cada método
 
-#### 2.4 Crear el Servlet de autenticación
-- Crear `AuthServlet.java` en el paquete `servlet`
-- Mapear la ruta `/api/auth` en el `web.xml` o con la anotación `@WebServlet`
-- Implementar `doPost` para diferenciar entre `/api/auth/register` y `/api/auth/login` leyendo la URL
-- Leer el cuerpo de la petición como JSON usando Gson y parsearlo al DTO correspondiente
-- El login devuelve un token sencillo (puede ser un UUID guardado en una tabla `sessions`)
-- Comentar cada parte del Servlet
+#### 2.4 Crear el Servlet de autenticación ✅
+- [x] Crear `AuthServlet.java` en el paquete `servlet`
+- [x] Mapear la ruta `/api/auth` con la anotación `@WebServlet`
+- [x] Implementar `doPost` para diferenciar entre `/api/auth/register` y `/api/auth/login` leyendo la URL
+- [x] Leer el cuerpo de la petición como JSON usando Gson y parsearlo al DTO correspondiente
+- [x] El login devuelve un token UUID como token de sesión
+- [x] Comentar cada parte del Servlet
 
-#### 2.5 Crear la pantalla de registro en Angular
-- Crear el componente `pages/register` con formulario: nombre, email, contraseña
-- Validaciones básicas: campos obligatorios, email con formato válido, contraseña mínimo 6 caracteres
-- Llamada al endpoint `POST /api/auth/register`
-- Mensaje de éxito o error con el estilo cozy definido en la guía
+#### 2.5 Crear la pantalla de registro en Angular ✅
+- [x] Crear el componente `pages/register` con formulario: nombre, email, contraseña
+- [x] Validaciones básicas: campos obligatorios, email con formato válido, contraseña mínimo 6 caracteres
+- [x] Llamada al endpoint `POST /api/auth/register`
+- [x] Mensaje de éxito o error con el estilo cozy definido en la guía
 
-#### 2.6 Crear la pantalla de login en Angular
-- Crear el componente `pages/login` con formulario: email, contraseña
-- Llamada al endpoint `POST /api/auth/login`
-- Guardar el token de sesión en `localStorage`
-- Redirigir al dashboard al entrar correctamente
-- Mostrar mensaje de error si las credenciales son incorrectas
+#### 2.6 Crear la pantalla de login en Angular ✅
+- [x] Crear el componente `pages/login` con formulario: email, contraseña
+- [x] Llamada al endpoint `POST /api/auth/login`
+- [x] Guardar el token de sesión en `localStorage`
+- [x] Redirigir al dashboard al entrar correctamente
+- [x] Mostrar mensaje de error si las credenciales son incorrectas
 
-#### 2.7 Crear el servicio de autenticación en Angular
-- Crear `AuthService` en `services/auth.service.ts`
-- Métodos: `register()`, `login()`, `logout()`, `isLoggedIn()`, `getCurrentUserId()`
-- El servicio lee y escribe el token en `localStorage`
-- Crear un guard de ruta para proteger las páginas que requieren login
+#### 2.7 Crear el servicio de autenticación en Angular ✅
+- [x] Crear `AuthService` en `services/auth.service.ts`
+- [x] Métodos: `register()`, `login()`, `logout()`, `isLoggedIn()`, `getCurrentUserId()`
+- [x] El servicio lee y escribe el token en `localStorage`
+- [x] Crear un guard de ruta para proteger las páginas que requieren login
 
 
 ---

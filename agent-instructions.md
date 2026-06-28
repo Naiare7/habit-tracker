@@ -107,6 +107,7 @@
 4. **Añade los comentarios** antes de entregar el código.
 5. **Verifica** que el código compila o tiene la sintaxis correcta antes de mostrarlo.
 6. **Responde en español**.
+7. **Una vez hecha la tarea, márcate la tarea como hecha en el documento.**
 
 ---
 

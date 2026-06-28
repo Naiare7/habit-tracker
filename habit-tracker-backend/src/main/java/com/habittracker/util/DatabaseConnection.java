@@ -19,9 +19,23 @@ public class DatabaseConnection {
     private static String username;
     private static String password;
 
-    // Carga las propiedades al iniciar la clase
+    // Carga las propiedades y registra el driver JDBC al iniciar la clase
     static {
         cargarPropiedades();
+        registrarDriver();
+    }
+
+    /**
+     * Registra explicitamente el driver de PostgreSQL.
+     * Necesario en entornos Tomcat donde la carga automatica via ServiceLoader
+     * puede no funcionar correctamente.
+     */
+    private static void registrarDriver() {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("No se encontro el driver JDBC de PostgreSQL", e);
+        }
     }
 
     /**

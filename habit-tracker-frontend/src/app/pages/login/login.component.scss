@@ -1,0 +1,133 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #FFF8F0;
+  padding: 24px;
+}
+
+.login-card {
+  background: #FAFAF5;
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 4px 16px rgba(139, 111, 71, 0.12);
+  border: 1px solid #E8DDD0;
+}
+
+.login-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #8B6F47;
+  text-align: center;
+  margin: 0 0 8px 0;
+}
+
+.login-subtitle {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  color: #8B6F47;
+  text-align: center;
+  margin: 0 0 32px 0;
+  opacity: 0.8;
+}
+
+.mensaje {
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+
+.mensaje-error {
+  background-color: #FFE8E8;
+  color: #FF6B6B;
+  border: 1px solid #FF6B6B;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo label {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #8B6F47;
+}
+
+.campo input {
+  padding: 12px 16px;
+  border: 2px solid #E8DDD0;
+  border-radius: 12px;
+  background-color: #FAFAF5;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  color: #8B6F47;
+  outline: none;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.campo input::placeholder {
+  color: #C4B5A0;
+}
+
+.campo input:focus {
+  border-color: #C3B1E1;
+  box-shadow: 0 0 0 3px rgba(195, 177, 225, 0.2);
+}
+
+.btn-primario {
+  padding: 14px 24px;
+  background-color: #FFB347;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter 200ms ease, transform 200ms ease;
+  box-shadow: 0 4px 16px rgba(139, 111, 71, 0.12);
+}
+
+.btn-primario:hover:not(:disabled) {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+
+.btn-primario:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-link {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  color: #8B6F47;
+  text-align: center;
+  margin-top: 24px;
+}
+
+.login-link a {
+  color: #FFB347;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}

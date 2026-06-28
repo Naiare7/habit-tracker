@@ -1,0 +1,67 @@
+<div class="register-container">
+  <div class="register-card">
+    <h1 class="register-title">Crear cuenta 🌱</h1>
+    <p class="register-subtitle">Empieza tu viaje de hábitos</p>
+
+    <!-- Mensaje de exito -->
+    <div *ngIf="mensajeExito" class="mensaje mensaje-exito">
+      {{ mensajeExito }}
+    </div>
+
+    <!-- Mensaje de error -->
+    <div *ngIf="mensajeError" class="mensaje mensaje-error">
+      {{ mensajeError }}
+    </div>
+
+    <form (ngSubmit)="registrar()" #formulario="ngForm" class="register-form">
+      <div class="campo">
+        <label for="nombre">Nombre</label>
+        <input
+          id="nombre"
+          name="nombre"
+          type="text"
+          [(ngModel)]="nombre"
+          placeholder="Tu nombre"
+          required
+        />
+      </div>
+
+      <div class="campo">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          [(ngModel)]="email"
+          placeholder="tu@email.com"
+          required
+        />
+      </div>
+
+      <div class="campo">
+        <label for="contrasena">Contrasena</label>
+        <input
+          id="contrasena"
+          name="contrasena"
+          type="password"
+          [(ngModel)]="contrasena"
+          placeholder="Minimo 6 caracteres"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="btn-primario"
+        [disabled]="cargando"
+      >
+        {{ cargando ? 'Creando cuenta...' : 'Crear cuenta 🌱' }}
+      </button>
+    </form>
+
+    <p class="register-link">
+      ¿Ya tienes cuenta?
+      <a href="/login">Inicia sesion</a>
+    </p>
+  </div>
+</div>
