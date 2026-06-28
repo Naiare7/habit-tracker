@@ -117,38 +117,37 @@
 
 ### Subtareas
 
-#### 3.1 Crear la tabla de hábitos en PostgreSQL
-- Crear el script SQL para la tabla `habits` con los campos: `id`, `user_id`, `name`, `description`, `emoji`, `frequency` (daily/weekly), `target_days` (array de días si es semanal), `color`, `is_active`, `created_at`
-- Añadir la clave foránea hacia la tabla `users`
-- Comentar cada campo
+#### 3.1 Crear la tabla de hábitos en PostgreSQL ✅
+- [x] Crear el script SQL para la tabla `habits` con los campos: `id`, `user_id`, `name`, `description`, `emoji`, `frequency` (daily/weekly), `target_days` (array de días si es semanal), `color`, `is_active`, `created_at`
+- [x] Añadir la clave foránea hacia la tabla `users`
+- [x] Comentar cada campo
 
-#### 3.2 Crear la clase Habit y su DAO
-- Crear la clase `Habit.java` en el paquete `model` con todos los campos de la tabla
-- Crear `HabitDAO.java` en el paquete `dao` con los métodos:
+#### 3.2 Crear la clase Habit y su DAO ✅
+- [x] Crear la clase `Habit.java` en el paquete `model` con todos los campos de la tabla
+- [x] Crear `HabitDAO.java` en el paquete `dao` con los métodos:
   - `findByUserId(int userId)` — devuelve los hábitos activos del usuario
   - `save(Habit habit)` — inserta un nuevo hábito
   - `update(Habit habit)` — actualiza un hábito existente
   - `deactivate(int habitId)` — pone `is_active = false` (borrado lógico)
-- Usar `PreparedStatement` en todas las queries
-- Comentar cada método
+- [x] Usar `PreparedStatement` en todas las queries
+- [x] Comentar cada método
 
-#### 3.3 Crear DTOs y el servicio de hábitos
-- Crear `HabitCreateDTO.java` (campos para crear un nuevo hábito)
-- Crear `HabitUpdateDTO.java` (mismos campos, para editar)
-- Crear `HabitResponseDTO.java` (todos los campos para mostrar en frontend)
-- Crear `HabitService.java` con los métodos: `createHabit`, `getHabitsByUser`, `updateHabit`, `deleteHabit`
-- El servicio usa el DAO para acceder a la BD
-- Comentar cada método
+#### 3.3 Crear DTOs y el servicio de hábitos ✅
+- [x] Crear `HabitCreateDTO.java` (campos para crear un nuevo hábito) ✅
+- [x] Crear `HabitUpdateDTO.java` (mismos campos, para editar) ✅
+- [x] Crear `HabitResponseDTO.java` (todos los campos para mostrar en frontend) ✅
+- [x] Crear `HabitService.java` con los métodos: `createHabit`, `getHabitsByUser`, `updateHabit`, `deleteHabit` ✅
+- [x] El servicio usa el DAO para acceder a la BD ✅
+- [x] Comentar cada método ✅
 
-#### 3.4 Crear el Servlet de hábitos
-- Crear `HabitServlet.java` mapeado a `/api/habits`
-- Implementar:
-  - `doGet` → llama a `getHabitsByUser` y devuelve el JSON de la lista
-  - `doPost` → llama a `createHabit` con los datos del cuerpo de la petición
-  - `doPut` → llama a `updateHabit` (leer el id de la URL)
-  - `doDelete` → llama a `deleteHabit` (leer el id de la URL)
-- Leer y escribir JSON con Gson
-- Comentar cada método
+#### 3.4 Crear el Servlet de hábitos ✅
+- [x] Crear `HabitServlet.java` mapeado a `/api/habits/*` ✅
+- [x] `doGet` → lista hábitos por userId ✅
+- [x] `doPost` → crea hábito desde JSON ✅
+- [x] `doPut` → actualiza hábito (id desde URL) ✅
+- [x] `doDelete` → borra lógico (id desde URL) ✅
+- [x] Leer y escribir JSON con Gson ✅
+- [x] Comentar cada método ✅
 
 #### 3.5 Crear el modelo y servicio de hábitos en Angular
 - Crear la interfaz `Habit` en `models/habit.model.ts`
