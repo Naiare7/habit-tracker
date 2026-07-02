@@ -1,0 +1,50 @@
+<!-- Estado de carga -->
+<div *ngIf="cargando" class="habit-list-cargando">
+  <span class="cargando-emoji">🌀</span>
+  <p>Cargando tus hábitos...</p>
+</div>
+
+<!-- Estado vacio: no hay habitos -->
+<div *ngIf="!cargando && habits.length === 0" class="habit-list-vacio">
+  <span class="vacio-emoji">🌱</span>
+  <h2 class="vacio-titulo">¡Aún no tienes hábitos!</h2>
+  <p class="vacio-texto">Añade el primero 🌱</p>
+</div>
+
+<!-- Lista de tarjetas de habitos -->
+<div *ngIf="!cargando && habits.length > 0" class="habit-list-grid">
+  <div
+    *ngFor="let habit of habits"
+    class="habit-card"
+    [style.borderLeftColor]="habit.color"
+  >
+    <div class="habit-card-contenido">
+      <span class="habit-emoji">{{ habit.emoji }}</span>
+      <div class="habit-info">
+        <h3 class="habit-nombre">{{ habit.name }}</h3>
+        <p class="habit-descripcion" *ngIf="habit.description">
+          {{ habit.description }}
+        </p>
+        <span class="habit-frecuencia">
+          {{ habit.frequency === 'daily' ? 'Diario' : 'Semanal' }}
+        </span>
+      </div>
+    </div>
+    <div class="habit-card-acciones">
+      <button
+        class="btn-icono btn-editar"
+        (click)="onEditar(habit)"
+        title="Editar hábito"
+      >
+        ✏️
+      </button>
+      <button
+        class="btn-icono btn-eliminar"
+        (click)="onEliminar(habit.id)"
+        title="Eliminar hábito"
+      >
+        🗑️
+      </button>
+    </div>
+  </div>
+</div>

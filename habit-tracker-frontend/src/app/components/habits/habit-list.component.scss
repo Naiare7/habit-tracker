@@ -1,0 +1,161 @@
+.habit-list-cargando {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.cargando-emoji {
+  font-size: 48px;
+  animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.habit-list-cargando p {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  color: #8B6F47;
+  margin-top: 16px;
+}
+
+/* Estado vacio */
+.habit-list-vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  text-align: center;
+  background: #FAFAF5;
+  border-radius: 20px;
+  border: 1px solid #E8DDD0;
+  box-shadow: 0 4px 16px rgba(139, 111, 71, 0.12);
+}
+
+.vacio-emoji {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.vacio-titulo {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #8B6F47;
+  margin: 0 0 8px 0;
+}
+
+.vacio-texto {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  color: #8B6F47;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* Grid de tarjetas */
+.habit-list-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* Tarjeta de habito individual */
+.habit-card {
+  background: #FAFAF5;
+  border: 1px solid #E8DDD0;
+  border-left: 6px solid #C3B1E1;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(139, 111, 71, 0.12);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.habit-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 32px rgba(139, 111, 71, 0.18);
+}
+
+.habit-card-contenido {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.habit-emoji {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.habit-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.habit-nombre {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #8B6F47;
+  margin: 0;
+}
+
+.habit-descripcion {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  color: #8B6F47;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.habit-frecuencia {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #C3B1E1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Acciones de la tarjeta */
+.habit-card-acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-icono {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 200ms ease, transform 200ms ease;
+  background: transparent;
+}
+
+.btn-icono:hover {
+  filter: brightness(0.9);
+  transform: translateY(-1px);
+}
+
+.btn-editar {
+  background: #FFF3B0;
+}
+
+.btn-eliminar {
+  background: #FFE8E8;
+}

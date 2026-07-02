@@ -149,22 +149,23 @@
 - [x] Leer y escribir JSON con Gson ✅
 - [x] Comentar cada método ✅
 
-#### 3.5 Crear el modelo y servicio de hábitos en Angular
-- Crear la interfaz `Habit` en `models/habit.model.ts`
-- Crear `HabitService` en `services/habit.service.ts` con los métodos que llaman a cada endpoint
-- Comentar cada método
+#### 3.5 Crear el modelo y servicio de hábitos en Angular ✅
+- [x] Crear la interfaz `Habit` en `models/habit.model.ts` ✅
+- [x] Crear las interfaces `HabitCreate` y `HabitUpdate` para los DTOs de entrada ✅
+- [x] Crear `HabitService` en `services/habit.service.ts` con los métodos que llaman a cada endpoint ✅
+- [x] Comentar cada método ✅
 
-#### 3.6 Crear el componente de lista de hábitos
-- Crear el componente `components/habits/habit-list`
-- Mostrar las tarjetas de hábitos con el estilo cozy: emoji grande, nombre, color de fondo
-- Botones para editar y eliminar cada hábito
-- Si no hay hábitos, mostrar un mensaje motivador con ilustración: `"¡Aún no tienes hábitos! Añade el primero 🌱"`
+#### 3.6 Crear el componente de lista de hábitos ✅
+- [x] Crear el componente `components/habits/habit-list` ✅
+- [x] Mostrar las tarjetas de hábitos con el estilo cozy: emoji grande, nombre, color de fondo ✅
+- [x] Botones para editar y eliminar cada hábito ✅
+- [x] Si no hay hábitos, mostrar un mensaje motivador con ilustración: `"¡Aún no tienes hábitos! Añade el primero 🌱"` ✅
 
-#### 3.7 Crear el formulario de crear/editar hábito
-- Crear el componente `components/habits/habit-form`
-- Campos: nombre, descripción, emoji (selector visual de emojis), frecuencia, color
-- El mismo formulario sirve para crear y para editar (si recibe un hábito como entrada, rellena los campos)
-- Validaciones básicas: nombre obligatorio, emoji obligatorio
+#### 3.7 Crear el formulario de crear/editar hábito ✅
+- [x] Crear el componente `components/habits/habit-form` ✅
+- [x] Campos: nombre, descripción, emoji (selector visual de emojis), frecuencia, color ✅
+- [x] El mismo formulario sirve para crear y para editar (si recibe un hábito como entrada, rellena los campos) ✅
+- [x] Validaciones básicas: nombre obligatorio, emoji obligatorio ✅
 
 
 ---

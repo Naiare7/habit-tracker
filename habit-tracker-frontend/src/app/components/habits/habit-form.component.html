@@ -1,0 +1,143 @@
+<div class="form-container">
+  <div class="form-card">
+    <h2 class="form-titulo">
+      {{ modoEdicion ? 'Editar hábito ✏️' : 'Crear nuevo hábito 🌱' }}
+    </h2>
+    <p class="form-subtitulo">
+      {{ modoEdicion ? 'Modifica los datos de tu hábito' : '¿Qué hábito quieres empezar?' }}
+    </p>
+
+    <!-- Mensaje de error -->
+    <div *ngIf="mensajeError" class="mensaje mensaje-error">
+      {{ mensajeError }}
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #formulario="ngForm" class="formulario">
+      <!-- Nombre -->
+      <div class="campo">
+        <label for="nombre">Nombre</label>
+        <input
+          id="nombre"
+          name="nombre"
+          type="text"
+          [(ngModel)]="nombre"
+          placeholder="Ej: Leer 20 páginas"
+          required
+        />
+      </div>
+
+      <!-- Descripcion -->
+      <div class="campo">
+        <label for="descripcion">Descripción <span class="opcional">(opcional)</span></label>
+        <textarea
+          id="descripcion"
+          name="descripcion"
+          [(ngModel)]="descripcion"
+          placeholder="¿Por qué es importante este hábito?"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <!-- Emoji -->
+      <div class="campo">
+        <label>Emoji</label>
+        <div class="emoji-grid">
+          <button
+            *ngFor="let e of emojis"
+            type="button"
+            class="emoji-item"
+            [class.seleccionado]="emoji === e"
+            (click)="seleccionarEmoji(e)"
+            [title]="e"
+          >
+            {{ e }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Frecuencia -->
+      <div class="campo">
+        <label>Frecuencia</label>
+        <div class="frecuencia-toggle">
+          <button
+            type="button"
+            class="frecuencia-btn"
+            [class.activo]="frecuencia === 'daily'"
+            (click)="frecuencia = 'daily'"
+          >
+            🌅 Diario
+          </button>
+          <button
+            type="button"
+            class="frecuencia-btn"
+            [class.activo]="frecuencia === 'weekly'"
+            (click)="frecuencia = 'weekly'"
+          >
+            📅 Semanal
+          </button>
+        </div>
+      </div>
+
+      <!-- Dias de la semana (solo si frecuencia semanal) -->
+      <div class="campo" *ngIf="mostrarDias">
+        <label>Días de la semana</label>
+        <div class="dias-grid">
+          <button
+            *ngFor="let dia of diasSemana"
+            type="button"
+            class="dia-item"
+            [class.seleccionado]="diaSeleccionado(dia.valor)"
+            (click)="toggleDia(dia.valor)"
+            [title]="dia.nombre"
+          >
+            {{ dia.abreviatura }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Color -->
+      <div class="campo">
+        <label>Color</label>
+        <div class="color-grid">
+          <button
+            *ngFor="let c of colores"
+            type="button"
+            class="color-item"
+            [class.seleccionado]="color === c"
+            [style.backgroundColor]="c"
+            (click)="seleccionarColor(c)"
+            [title]="c"
+          ></button>
+          <div class="color-personalizado">
+            <label for="colorPicker" class="color-picker-label">🎨</label>
+            <input
+              id="colorPicker"
+              name="colorPicker"
+              type="color"
+              [ngModel]="color"
+              (ngModelChange)="seleccionarColor($event)"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones de accion -->
+      <div class="form-acciones">
+        <button
+          type="button"
+          class="btn-secundario"
+          (click)="onCancelar()"
+        >
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          class="btn-primario"
+          [disabled]="cargando"
+        >
+          {{ cargando ? 'Guardando...' : modoEdicion ? 'Guardar cambios ✨' : 'Crear hábito 🌱' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
