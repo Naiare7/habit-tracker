@@ -25,6 +25,7 @@ export class AuthService {
   private apiUrl = 'http://localhost:8080/habit-tracker-backend/api/auth';
   private tokenKey = 'habit-tracker-token';
   private userIdKey = 'habit-tracker-user-id';
+  private nameKey = 'habit-tracker-name';
 
   /**
    * Registra un nuevo usuario.
@@ -87,11 +88,28 @@ export class AuthService {
   }
 
   /**
-   * Elimina el token y el id de sesion (cierra sesion).
+   * Guarda el nombre del usuario en localStorage.
+   * @param name Nombre del usuario
+   */
+  guardarNombre(name: string): void {
+    localStorage.setItem(this.nameKey, name);
+  }
+
+  /**
+   * Obtiene el nombre del usuario desde localStorage.
+   * @returns El nombre del usuario o null si no existe
+   */
+  obtenerNombre(): string | null {
+    return localStorage.getItem(this.nameKey);
+  }
+
+  /**
+   * Elimina el token, el id y el nombre de sesion (cierra sesion).
    */
   cerrarSesion(): void {
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem(this.userIdKey);
+    localStorage.removeItem(this.nameKey);
   }
 
   /**

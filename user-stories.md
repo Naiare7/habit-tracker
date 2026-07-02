@@ -176,44 +176,45 @@
 
 ### Subtareas
 
-#### 4.1 Crear la tabla de registros diarios en PostgreSQL
-- Crear el script SQL para la tabla `habit_logs` con los campos: `id`, `habit_id`, `user_id`, `completed_date` (DATE), `completed` (BOOLEAN), `notes` (texto opcional), `created_at`
-- Añadir restricción `UNIQUE` para que no haya duplicados de `habit_id + completed_date`
-- Comentar el script
+#### 4.1 Crear la tabla de registros diarios en PostgreSQL ✅
+- [x] Crear el script SQL para la tabla `habit_logs` con los campos: `id`, `habit_id`, `user_id`, `completed_date` (DATE), `completed` (BOOLEAN), `notes` (texto opcional), `created_at` ✅
+- [x] Añadir restricción `UNIQUE` para que no haya duplicados de `habit_id + completed_date` ✅
+- [x] Añadir índice adicional en `(user_id, completed_date)` para consultas eficientes ✅
+- [x] Comentar el script ✅
 
-#### 4.2 Crear la clase HabitLog y su DAO
-- Crear `HabitLog.java` en el paquete `model`
-- Crear `HabitLogDAO.java` en el paquete `dao` con los métodos:
-  - `findByHabitIdAndDate(int habitId, LocalDate date)`
-  - `findByUserIdAndDateRange(int userId, LocalDate from, LocalDate to)`
-  - `saveOrUpdate(HabitLog log)` — si ya existe el registro del día lo actualiza, si no lo crea
-- Usar `PreparedStatement` en todas las queries
-- Comentar cada método
+#### 4.2 Crear la clase HabitLog y su DAO ✅
+- [x] Crear `HabitLog.java` en el paquete `model` ✅
+- [x] Crear `HabitLogDAO.java` en el paquete `dao` con los métodos:
+  - [x] `findByHabitIdAndDate(int habitId, LocalDate date)` ✅
+  - [x] `findByUserIdAndDateRange(int userId, LocalDate from, LocalDate to)` ✅
+  - [x] `saveOrUpdate(HabitLog log)` — UPSERT con `INSERT ... ON CONFLICT DO UPDATE` ✅
+- [x] Usar `PreparedStatement` en todas las queries ✅
+- [x] Comentar cada método ✅
 
-#### 4.3 Crear DTOs y el servicio de registros
-- Crear `HabitLogDTO.java` (habitId, date, completed, notes)
-- Crear `HabitLogService.java` con los métodos:
-  - `markHabit(int habitId, LocalDate date, boolean completed)` — crea o actualiza el registro del día
-  - `getLogsForDay(int userId, LocalDate date)` — devuelve todos los registros de un día concreto
-- Comentar cada método
+#### 4.3 Crear DTOs y el servicio de registros ✅
+- [x] Crear `HabitLogDTO.java` (habitId, date, completed, notes) ✅
+- [x] Crear `HabitLogService.java` con los métodos:
+  - [x] `markHabit(int habitId, int userId, LocalDate date, boolean completed)` — crea o actualiza el registro del día ✅
+  - [x] `getLogsForDay(int userId, LocalDate date)` — devuelve todos los registros de un día concreto ✅
+- [x] Comentar cada método ✅
 
-#### 4.4 Crear el Servlet de registros
-- Crear `HabitLogServlet.java` mapeado a `/api/habit-logs`
-- `doPost` → marcar o desmarcar un hábito (llama a `markHabit`)
-- `doGet` → obtener los registros de un día (lee el parámetro `?date=YYYY-MM-DD` de la URL)
-- Comentar cada parte
+#### 4.4 Crear el Servlet de registros ✅
+- [x] Crear `HabitLogServlet.java` mapeado a `/api/habit-logs` ✅
+- [x] `doPost` → marcar o desmarcar un hábito (llama a `markHabit`) ✅
+- [x] `doGet` → obtener los registros de un día (lee el parámetro `?date=YYYY-MM-DD` de la URL) ✅
+- [x] Comentar cada parte ✅
 
-#### 4.5 Actualizar la tarjeta de hábito en Angular para marcar/desmarcar
-- Añadir un botón/checkbox en la tarjeta de hábito
-- Al hacer clic, llamar al endpoint de marcar
-- Cambiar visualmente la tarjeta: fondo verde suave, check visible, emoji animado
-- Mostrar el mensaje `"¡Genial! Un paso más 🌟"` durante 2 segundos
+#### 4.5 Actualizar la tarjeta de hábito en Angular para marcar/desmarcar ✅
+- [x] Añadir un botón/checkbox en la tarjeta de hábito ✅
+- [x] Al hacer clic, llamar al endpoint de marcar ✅
+- [x] Cambiar visualmente la tarjeta: fondo verde suave, check visible, emoji animado ✅
+- [x] Mostrar el mensaje `"¡Genial! Un paso más 🌟"` durante 2 segundos ✅
 
-#### 4.6 Crear el componente de vista diaria (dashboard)
-- Crear el componente `pages/dashboard`
-- Mostrar la fecha de hoy y el saludo personalizado según la hora del día
-- Mostrar la lista de hábitos del día con su estado (completo/pendiente)
-- Mostrar una barra de progreso circular con los hábitos completados / total del día
+#### 4.6 Crear el componente de vista diaria (dashboard) ✅
+- [x] Crear el componente `pages/dashboard` ✅
+- [x] Mostrar la fecha de hoy y el saludo personalizado según la hora del día ✅
+- [x] Mostrar la lista de hábitos del día con su estado (completo/pendiente) ✅
+- [x] Mostrar una barra de progreso circular con los hábitos completados / total del día ✅
 
 
 ---

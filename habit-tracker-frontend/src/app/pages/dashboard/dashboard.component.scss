@@ -1,0 +1,169 @@
+.dashboard {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 24px 100px 24px;
+  position: relative;
+}
+
+/* --- Saludo --- */
+.saludo-seccion {
+  background: #EDE8F5;
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-bottom: 28px;
+  border: 1px solid #E8DDD0;
+  box-shadow: 0 4px 16px rgba(139, 111, 71, 0.12);
+}
+
+.saludo-titulo {
+  font-family: 'Nunito', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #8B6F47;
+  margin: 0 0 4px 0;
+}
+
+.saludo-frase {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 18px;
+  color: #8B6F47;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* --- Progreso circular --- */
+.progreso-seccion {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #FAFAF5;
+  border-radius: 20px;
+  padding: 24px 32px;
+  margin-bottom: 28px;
+  border: 1px solid #E8DDD0;
+  box-shadow: 0 4px 16px rgba(139, 111, 71, 0.12);
+}
+
+.progreso-circular {
+  flex-shrink: 0;
+}
+
+.progreso-svg {
+  width: 120px;
+  height: 120px;
+}
+
+.progreso-arco {
+  transition: stroke-dashoffset 600ms ease;
+}
+
+.progreso-numero {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  fill: #8B6F47;
+}
+
+.progreso-label {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 11px;
+  fill: #8B6F47;
+  opacity: 0.6;
+}
+
+.progreso-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.progreso-texto {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  color: #8B6F47;
+  margin: 0;
+}
+
+.progreso-porcentaje {
+  font-family: 'Nunito', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: #A8C5A0;
+  margin: 0;
+}
+
+/* --- Cargando --- */
+.cargando-seccion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.cargando-emoji {
+  font-size: 48px;
+  animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.cargando-seccion p {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  color: #8B6F47;
+  margin-top: 16px;
+}
+
+/* --- Lista de habitos --- */
+.lista-seccion {
+  animation: fadeInUp 400ms ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- FAB (boton flotante) --- */
+.fab {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #FFB347;
+  color: white;
+  border: none;
+  font-size: 32px;
+  font-weight: 300;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(139, 111, 71, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 200ms ease, transform 200ms ease;
+  z-index: 100;
+  line-height: 1;
+  padding: 0;
+}
+
+.fab:hover {
+  filter: brightness(0.95);
+  transform: scale(1.1);
+}
+
+.fab:active {
+  transform: scale(0.95);
+}

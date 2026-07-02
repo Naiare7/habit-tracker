@@ -1,0 +1,83 @@
+<div class="dashboard">
+  <!-- Saludo personalizado -->
+  <div class="saludo-seccion">
+    <div class="saludo-texto">
+      <h1 class="saludo-titulo">{{ saludo }}, {{ nombre }}! {{ emojiSaludo }}</h1>
+      <p class="saludo-frase">{{ fraseSaludo }}</p>
+    </div>
+  </div>
+
+  <!-- Barra de progreso circular -->
+  <div class="progreso-seccion" *ngIf="!cargando && totalHabitos > 0">
+    <div class="progreso-circular">
+      <svg viewBox="0 0 120 120" class="progreso-svg">
+        <!-- Circulo de fondo -->
+        <circle
+          cx="60" cy="60" r="54"
+          fill="none"
+          stroke="#E8DDD0"
+          stroke-width="12"
+        />
+        <!-- Arco de progreso -->
+        <circle
+          cx="60" cy="60" r="54"
+          fill="none"
+          stroke="#A8C5A0"
+          stroke-width="12"
+          stroke-linecap="round"
+          [attr.stroke-dasharray]="circunferencia"
+          [attr.stroke-dashoffset]="circunferencia * (1 - progreso / 100)"
+          transform="rotate(-90 60 60)"
+          class="progreso-arco"
+        />
+        <!-- Texto en el centro -->
+        <text
+          x="60" y="55"
+          text-anchor="middle"
+          class="progreso-numero"
+        >
+          {{ completadosCount }}/{{ totalHabitos }}
+        </text>
+        <text
+          x="60" y="75"
+          text-anchor="middle"
+          class="progreso-label"
+        >
+          hábitos
+        </text>
+      </svg>
+    </div>
+    <div class="progreso-info">
+      <p class="progreso-texto">
+        <strong>{{ completadosCount }}</strong> de <strong>{{ totalHabitos }}</strong> hábitos completados
+      </p>
+      <p class="progreso-porcentaje">{{ progreso }}%</p>
+    </div>
+  </div>
+
+  <!-- Estado cargando -->
+  <div *ngIf="cargando" class="cargando-seccion">
+    <span class="cargando-emoji">🌀</span>
+    <p>Cargando tus hábitos...</p>
+  </div>
+
+  <!-- Lista de habitos -->
+  <div class="lista-seccion" *ngIf="!cargando">
+    <app-habit-list
+      [habits]="habits"
+      [cargando]="cargando"
+      [userId]="userId"
+      [fecha]="fechaHoy"
+      [completados]="completados"
+      (editar)="onEditar($event)"
+      (eliminar)="onEliminar($event)"
+      (marcar)="recargarLogs()"
+    >
+    </app-habit-list>
+  </div>
+
+  <!-- Boton flotante para añadir habito -->
+  <button class="fab" (click)="irACrearHabito()" title="Añadir nuevo hábito">
+    +
+  </button>
+</div>

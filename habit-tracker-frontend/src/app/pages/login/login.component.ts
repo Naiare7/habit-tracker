@@ -55,6 +55,7 @@ export class LoginComponent {
       next: (respuesta) => {
         this.authService.guardarToken(respuesta.token!);
         this.authService.guardarUserId(respuesta.id);
+        this.authService.guardarNombre(respuesta.name);
         this.router.navigate(['/dashboard']);
       },
       error: (error) => {

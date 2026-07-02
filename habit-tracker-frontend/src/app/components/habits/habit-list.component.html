@@ -16,8 +16,21 @@
   <div
     *ngFor="let habit of habits"
     class="habit-card"
-    [style.borderLeftColor]="habit.color"
+    [class.completado]="estaCompletado(habit.id)"
+    [class.celebrando]="habitoCelebradoId === habit.id"
+    [style.borderLeftColor]="estaCompletado(habit.id) ? '#A8C5A0' : habit.color"
   >
+    <!-- Boton de marcar/desmarcar -->
+    <button
+      class="check-btn"
+      [class.completado]="estaCompletado(habit.id)"
+      [disabled]="marcando.has(habit.id)"
+      (click)="toggleHabit(habit)"
+      title="Marcar como completado"
+    >
+      <span *ngIf="estaCompletado(habit.id)" class="check-icon">✓</span>
+    </button>
+
     <div class="habit-card-contenido">
       <span class="habit-emoji">{{ habit.emoji }}</span>
       <div class="habit-info">
@@ -30,6 +43,7 @@
         </span>
       </div>
     </div>
+
     <div class="habit-card-acciones">
       <button
         class="btn-icono btn-editar"
@@ -45,6 +59,14 @@
       >
         🗑️
       </button>
+    </div>
+
+    <!-- Mensaje de celebracion -->
+    <div
+      *ngIf="habitoCelebradoId === habit.id && mensajeCelebracion"
+      class="mensaje-celebracion"
+    >
+      {{ mensajeCelebracion }}
     </div>
   </div>
 </div>

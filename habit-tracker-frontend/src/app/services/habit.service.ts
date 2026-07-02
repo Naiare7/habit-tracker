@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Habit, HabitCreate, HabitUpdate } from '../models/habit.model';
+import { HabitLog } from '../models/habit-log.model';
 
 /**
  * Servicio que centraliza las llamadas al backend para la gestion de habitos.
@@ -42,6 +43,18 @@ export class HabitService {
     return this.http.put<Habit>(`${this.apiUrl}/${id}`, habit);
   }
 
+  private apiUrlLogs = 'http://localhost:8080/habit-tracker-backend/api/habit-logs';
+
+  /**
+   * Obtiene los registros de habitos de un usuario en una fecha concreta.
+   * @param userId - El id del usuario
+   * @param date - La fecha en formato YYYY-MM-DD
+   * @returns Observable con un array de HabitLog
+   */
+  getLogsForDay(userId: number, date: string): Observable<HabitLog[]> {
+    return this.http.get<HabitLog[]>(`${this.apiUrlLogs}?userId=${userId}&date=${date}`);
+  }
+
   /**
    * Elimina (borrado logico) un habito.
    * @param id - El id del habito a eliminar
@@ -49,5 +62,22 @@ export class HabitService {
    */
   deleteHabit(id: number): Observable<{ mensaje: string }> {
     return this.http.delete<{ mensaje: string }>(`${this.apiUrl}/${id}`);
+  }
+
+  /**
+   * Marca o desmarca un habito en una fecha concreta.
+   * @param habitId - El id del habito
+   * @param userId - El id del usuario
+   * @param date - La fecha en formato YYYY-MM-DD
+   * @param completed - true si esta completado, false si no
+   * @returns Observable con el registro guardado
+   */
+  marcarHabit(habitId: number, userId: number, date: string, completed: boolean): Observable<HabitLog> {
+    return this.http.post<HabitLog>(this.apiUrlLogs, {
+      habitId,
+      userId,
+      date,
+      completed
+    });
   }
 }
