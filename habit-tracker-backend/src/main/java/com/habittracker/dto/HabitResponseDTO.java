@@ -1,9 +1,9 @@
 package com.habittracker.dto;
 
+import java.text.SimpleDateFormat;
+
 import com.habittracker.model.Habit;
 
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
 
 /**
  * DTO de salida con todos los datos del habito para el frontend.

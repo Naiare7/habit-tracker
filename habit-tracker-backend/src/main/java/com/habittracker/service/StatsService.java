@@ -1,16 +1,17 @@
 package com.habittracker.service;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import com.habittracker.dao.StatsDAO;
 import com.habittracker.dto.DailyStatsDTO;
 import com.habittracker.dto.MonthlyStatsDTO;
 import com.habittracker.dto.StreakDTO;
 import com.habittracker.dto.WeeklyStatsEntryDTO;
-
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.temporal.ChronoField;
-import java.time.temporal.TemporalAdjusters;
-import java.util.*;
 
 /**
  * Servicio con la logica de negocio para las estadisticas de la aplicacion.

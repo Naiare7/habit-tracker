@@ -1,7 +1,7 @@
 package com.habittracker.model;
 
 import java.sql.Timestamp;
-import java.util.Arrays;
+
 
 /**
  * Representa un habito creado por un usuario.
