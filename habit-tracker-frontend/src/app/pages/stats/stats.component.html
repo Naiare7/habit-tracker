@@ -1,0 +1,69 @@
+<div class="stats">
+  <!-- Cabecera con el titulo de la pantalla -->
+  <div class="cabecera-seccion">
+    <h1 class="cabecera-titulo">Mis estadísticas 📊</h1>
+    <p class="cabecera-frase">Mira todo lo que has avanzado 🌱</p>
+  </div>
+
+  <!-- Estado cargando -->
+  <div *ngIf="cargando" class="cargando-seccion">
+    <span class="cargando-emoji">🌀</span>
+    <p>Cargando tus estadísticas...</p>
+  </div>
+
+  <ng-container *ngIf="!cargando">
+    <!-- Tarjeta con la racha del habito mas largo -->
+    <div class="racha-seccion">
+      <ng-container *ngIf="habitoMasLargo">
+        <span class="racha-emoji">{{ habitoMasLargo.habit.emoji }}</span>
+        <div class="racha-info">
+          <p class="racha-nombre">{{ habitoMasLargo.habit.name }}</p>
+          <p *ngIf="habitoMasLargo.racha > 0" class="racha-dias">
+            <strong>{{ habitoMasLargo.racha }}</strong>
+            {{ habitoMasLargo.racha === 1 ? 'día de racha' : 'días de racha' }}
+          </p>
+          <p *ngIf="habitoMasLargo.racha === 0" class="racha-dias">¡Empieza hoy tu racha! 🌱</p>
+        </div>
+        <span *ngIf="habitoMasLargo.racha > 0" class="racha-emoji-fuego">🔥</span>
+      </ng-container>
+
+      <!-- Mensaje si el usuario aun no tiene habitos -->
+      <p *ngIf="!habitoMasLargo" class="racha-vacio">
+        Aún no tienes hábitos para medir rachas 🌱
+      </p>
+    </div>
+
+    <!-- Selector para cambiar entre semana y mes -->
+    <div class="selector-seccion">
+      <button
+        class="selector-boton"
+        [ngClass]="{ 'selector-activo': vista === 'semana' }"
+        (click)="cambiarVista('semana')"
+      >
+        Semana
+      </button>
+      <button
+        class="selector-boton"
+        [ngClass]="{ 'selector-activo': vista === 'mes' }"
+        (click)="cambiarVista('mes')"
+      >
+        Mes
+      </button>
+    </div>
+
+    <!-- Vista de la semana: grafico de barras -->
+    <div *ngIf="vista === 'semana'" class="vista-semana">
+      <app-weekly-chart [datosSemanales]="datosSemanales"></app-weekly-chart>
+    </div>
+
+    <!-- Vista del mes: grafico circular y calendario -->
+    <div *ngIf="vista === 'mes'" class="vista-mes">
+      <app-monthly-chart [datosMensuales]="datosMensuales"></app-monthly-chart>
+      <app-habit-calendar
+        [datosCalendario]="datosCalendario"
+        [anho]="anho"
+        [mes]="mes"
+      ></app-habit-calendar>
+    </div>
+  </ng-container>
+</div>

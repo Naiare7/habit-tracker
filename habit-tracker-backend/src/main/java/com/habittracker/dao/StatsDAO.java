@@ -28,10 +28,25 @@ public class StatsDAO {
      * @return Mapa donde la clave es la fecha y el valor es la cantidad de habitos completados ese dia
      */
     public Map<LocalDate, Integer> getWeeklyStats(int userId, LocalDate weekStart, LocalDate weekEnd) {
+        return getDailyCompletedCount(userId, weekStart, weekEnd);
+    }
+
+    /**
+     * Cuenta cuantos habitos completados hubo cada dia de un rango de fechas.
+     * Solo incluye los dias que tienen al menos un registro en habit_logs,
+     * aunque ese dia no tenga ningun habito completado (completed_count = 0).
+     *
+     * @param userId ID del usuario
+     * @param from   Fecha de inicio del rango
+     * @param to     Fecha de fin del rango
+     * @return Mapa donde la clave es la fecha y el valor es la cantidad de habitos completados ese dia
+     */
+    public Map<LocalDate, Integer> getDailyCompletedCount(int userId, LocalDate from, LocalDate to) {
         Map<LocalDate, Integer> stats = new HashMap<>();
-        String sql = "SELECT completed_date, COUNT(*) AS completed_count "
+        String sql = "SELECT completed_date, "
+                   + "SUM(CASE WHEN completed = TRUE THEN 1 ELSE 0 END) AS completed_count "
                    + "FROM habit_logs "
-                   + "WHERE user_id = ? AND completed = TRUE "
+                   + "WHERE user_id = ? "
                    + "AND completed_date BETWEEN ? AND ? "
                    + "GROUP BY completed_date "
                    + "ORDER BY completed_date";
@@ -40,8 +55,8 @@ public class StatsDAO {
              PreparedStatement sentencia = conexion.prepareStatement(sql)) {
 
             sentencia.setInt(1, userId);
-            sentencia.setDate(2, Date.valueOf(weekStart));
-            sentencia.setDate(3, Date.valueOf(weekEnd));
+            sentencia.setDate(2, Date.valueOf(from));
+            sentencia.setDate(3, Date.valueOf(to));
 
             try (ResultSet resultado = sentencia.executeQuery()) {
                 while (resultado.next()) {
@@ -51,7 +66,7 @@ public class StatsDAO {
                 }
             }
         } catch (SQLException e) {
-            System.err.println("Error al obtener estadisticas semanales: " + e.getMessage());
+            System.err.println("Error al obtener conteo diario completados: " + e.getMessage());
         }
 
         return stats;

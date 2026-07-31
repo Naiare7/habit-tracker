@@ -1,0 +1,24 @@
+<div class="monthly-chart">
+  <!-- Grafico de doughnut con el porcentaje de cumplimiento del mes -->
+  <div class="grafico-contenedor" *ngIf="datosMensuales">
+    <div class="grafico-relativo">
+      <canvas baseChart
+        [type]="'doughnut'"
+        [data]="datosGrafico"
+        [options]="opcionesGrafico"
+      ></canvas>
+
+      <!-- Numero grande en el centro del grafico -->
+      <div class="centro-grafico">
+        <span class="porcentaje-central">{{ porcentaje }}%</span>
+        <span class="etiqueta-central">cumplimiento</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje motivador si aun no hay datos del mes -->
+  <div class="grafico-vacio" *ngIf="!datosMensuales">
+    <span class="emoji-vacio">🌱</span>
+    <p>Aún no hay datos este mes</p>
+  </div>
+</div>

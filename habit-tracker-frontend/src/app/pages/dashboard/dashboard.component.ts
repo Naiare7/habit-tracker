@@ -41,6 +41,9 @@ export class DashboardComponent implements OnInit {
   /** Porcentaje de progreso (0-100) */
   progreso: number = 0;
 
+  /** Longitud de la circunferencia del arco SVG de progreso (2 * PI * radio 54) */
+  circunferencia: number = 2 * Math.PI * 54;
+
   /** Fecha de hoy en formato YYYY-MM-DD */
   fechaHoy: string = new Date().toISOString().split('T')[0];
 

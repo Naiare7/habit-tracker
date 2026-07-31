@@ -21,8 +21,10 @@ com/habittracker/dto/UserResponseDTO.class
 com/habittracker/util/DatabaseConnection.class
 com/habittracker/servlet/HabitServlet.class
 com/habittracker/dto/WeeklyStatsEntryDTO.class
+com/habittracker/dto/DailyStatsDTO.class
 com/habittracker/dao/HabitLogDAO.class
 com/habittracker/dto/HabitUpdateDTO.class
 com/habittracker/dao/UserDAO.class
 com/habittracker/model/HabitLog.class
+com/habittracker/servlet/StatsServlet.class
 com/habittracker/dto/MonthlyStatsDTO.class

@@ -1,0 +1,16 @@
+<div class="weekly-chart">
+  <!-- Grafico de barras con los habitos completados por dia -->
+  <div class="grafico-contenedor" *ngIf="datosSemanales.length > 0">
+    <canvas baseChart
+      [type]="'bar'"
+      [data]="datosGrafico"
+      [options]="opcionesGrafico"
+    ></canvas>
+  </div>
+
+  <!-- Mensaje motivador si no hay datos de la semana -->
+  <div class="grafico-vacio" *ngIf="datosSemanales.length === 0">
+    <span class="emoji-vacio">🌱</span>
+    <p>Aún no hay datos de esta semana</p>
+  </div>
+</div>

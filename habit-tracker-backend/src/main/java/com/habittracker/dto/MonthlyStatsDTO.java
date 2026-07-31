@@ -2,7 +2,8 @@ package com.habittracker.dto;
 
 /**
  * DTO que representa el porcentaje de cumplimiento de un mes.
- * Indica cuantos dias del mes se completaron todos los habitos.
+ * El porcentaje indica que proporcion del total de registros posibles
+ * (habitos activos * dias del mes) fueron completados.
  */
 public class MonthlyStatsDTO {
 
@@ -16,7 +17,7 @@ public class MonthlyStatsDTO {
      * Crea un DTO de estadistica mensual con todos los campos.
      *
      * @param percentage      Porcentaje de cumplimiento (0.0 a 100.0)
-     * @param completedDays   Numero de dias con todos los habitos completados
+     * @param completedDays   Total de registros de habitos completados en el mes
      * @param totalDaysInMonth Total de dias del mes
      */
     public MonthlyStatsDTO(double percentage, int completedDays, int totalDaysInMonth) {

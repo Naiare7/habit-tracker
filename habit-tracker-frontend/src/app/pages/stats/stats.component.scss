@@ -1,0 +1,181 @@
+.stats {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 24px 100px 24px;
+}
+
+/* --- Cabecera --- */
+.cabecera-seccion {
+  background: #EDE8F5;
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-bottom: 28px;
+  border: 1px solid #E8DDD0;
+  box-shadow: 0 4px 16px rgba(139, 111, 71, 0.12);
+}
+
+.cabecera-titulo {
+  font-family: 'Nunito', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #8B6F47;
+  margin: 0 0 4px 0;
+}
+
+.cabecera-frase {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 18px;
+  color: #8B6F47;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* --- Cargando --- */
+.cargando-seccion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.cargando-emoji {
+  font-size: 48px;
+  animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.cargando-seccion p {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  color: #8B6F47;
+  margin-top: 16px;
+}
+
+/* --- Racha del habito mas largo --- */
+.racha-seccion {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #FAFAF5;
+  border-radius: 20px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  border: 1px solid #E8DDD0;
+  box-shadow: 0 4px 16px rgba(139, 111, 71, 0.12);
+}
+
+.racha-emoji {
+  font-size: 40px;
+}
+
+.racha-emoji-fuego {
+  font-size: 28px;
+  margin-left: auto;
+}
+
+.racha-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.racha-nombre {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #8B6F47;
+  margin: 0;
+}
+
+.racha-dias {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  color: #8B6F47;
+  margin: 0;
+}
+
+.racha-dias strong {
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #A8C5A0;
+}
+
+.racha-vacio {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  color: #8B6F47;
+  margin: 0;
+}
+
+/* --- Selector semana/mes --- */
+.selector-seccion {
+  display: flex;
+  gap: 8px;
+  background: #FAFAF5;
+  border: 1px solid #E8DDD0;
+  border-radius: 50px;
+  padding: 6px;
+  margin-bottom: 24px;
+  width: fit-content;
+}
+
+.selector-boton {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #8B6F47;
+  background: transparent;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: background 200ms ease, color 200ms ease, filter 200ms ease;
+}
+
+.selector-boton:hover {
+  filter: brightness(0.95);
+}
+
+.selector-activo {
+  background: #FFB347;
+  color: #FFFFFF;
+}
+
+/* --- Vista de la semana --- */
+.vista-semana {
+  animation: fadeInUp 400ms ease;
+}
+
+/* --- Vista del mes: dos columnas en escritorio --- */
+.vista-mes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+  animation: fadeInUp 400ms ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* En movil los graficos se apilan verticalmente */
+@media (max-width: 768px) {
+  .vista-mes {
+    grid-template-columns: 1fr;
+  }
+}

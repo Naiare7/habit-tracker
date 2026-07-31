@@ -1,6 +1,7 @@
 package com.habittracker.service;
 
 import com.habittracker.dao.StatsDAO;
+import com.habittracker.dto.DailyStatsDTO;
 import com.habittracker.dto.MonthlyStatsDTO;
 import com.habittracker.dto.StreakDTO;
 import com.habittracker.dto.WeeklyStatsEntryDTO;
@@ -94,6 +95,48 @@ public class StatsService {
     public StreakDTO getStreak(int habitId) {
         int racha = statsDAO.getStreak(habitId);
         return new StreakDTO(habitId, racha);
+    }
+
+    /**
+     * Obtiene el nivel de cumplimiento de cada dia del mes para el calendario.
+     * Solo devuelve los dias que tienen registros: los dias sin ningun registro
+     * se omiten para que el frontend pueda distinguirlos como "sin datos".
+     *
+     * @param userId ID del usuario
+     * @param year   Anho del mes a consultar
+     * @param month  Mes a consultar (1 = enero, 12 = diciembre)
+     * @return Lista de DailyStatsDTO con el cumplimiento de cada dia con registros
+     */
+    public List<DailyStatsDTO> getDailyStats(int userId, int year, int month) {
+        LocalDate primerDia = LocalDate.of(year, month, 1);
+        LocalDate ultimoDia = primerDia.with(TemporalAdjusters.lastDayOfMonth());
+
+        int totalHabitosActivos = statsDAO.getTotalActiveHabits(userId);
+        Map<LocalDate, Integer> completadosPorDia =
+            statsDAO.getDailyCompletedCount(userId, primerDia, ultimoDia);
+
+        // Recorre cada dia del mes y crea un DTO solo si tiene registros
+        List<DailyStatsDTO> resultado = new ArrayList<>();
+        LocalDate diaActual = primerDia;
+
+        while (!diaActual.isAfter(ultimoDia)) {
+            if (completadosPorDia.containsKey(diaActual)) {
+                int completados = completadosPorDia.get(diaActual);
+
+                double porcentaje = 0.0;
+                if (totalHabitosActivos > 0) {
+                    porcentaje = ((double) completados / totalHabitosActivos) * 100.0;
+                    porcentaje = Math.round(porcentaje * 100.0) / 100.0;
+                }
+
+                resultado.add(new DailyStatsDTO(
+                    diaActual.toString(), completados, totalHabitosActivos, porcentaje));
+            }
+
+            diaActual = diaActual.plusDays(1);
+        }
+
+        return resultado;
     }
 
     /**

@@ -1,0 +1,31 @@
+<div class="habit-calendar">
+  <!-- Cabecera con las iniciales de los dias de la semana -->
+  <div class="cabecera-semana">
+    <span class="dia-semana" *ngFor="let dia of diasSemana">{{ dia }}</span>
+  </div>
+
+  <!-- Cuadricula de dias del mes -->
+  <div class="cuadricula">
+    <ng-container *ngFor="let celda of celdas; trackBy: trackByIndex">
+      <!-- Celda con datos de un dia del mes y su tooltip -->
+      <div *ngIf="celda" class="celda" [ngClass]="celda.claseColor">
+        <span class="numero-dia">{{ celda.numero }}</span>
+
+        <!-- Tooltip con los detalles del dia al pasar el raton por encima -->
+        <div class="tooltip">
+          <span class="tooltip-fecha">{{ celda.fechaFormateada }}</span>
+          <span *ngIf="celda.datos" class="tooltip-detalle">
+            {{ celda.datos.completedCount }} de {{ celda.datos.totalHabits }} hábitos completados
+          </span>
+          <span *ngIf="celda.datos" class="tooltip-porcentaje">
+            {{ redondearPorcentaje(celda.datos.percentage) }}%
+          </span>
+          <span *ngIf="!celda.datos" class="tooltip-detalle">Sin datos este día</span>
+        </div>
+      </div>
+
+      <!-- Hueco vacio antes del primer dia del mes -->
+      <div *ngIf="!celda" class="celda-vacia"></div>
+    </ng-container>
+  </div>
+</div>

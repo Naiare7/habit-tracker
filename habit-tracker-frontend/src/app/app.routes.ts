@@ -23,6 +23,12 @@ export const routes: Routes = [
       .then(m => m.DashboardComponent)
   },
   {
+    path: 'stats',
+    canActivate: [authGuard],
+    loadComponent: () => import('./pages/stats/stats.component')
+      .then(m => m.StatsComponent)
+  },
+  {
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'

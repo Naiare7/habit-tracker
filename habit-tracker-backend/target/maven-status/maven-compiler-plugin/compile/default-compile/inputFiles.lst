@@ -2,6 +2,7 @@
 /home/naia/Proyectos/habit-tracker/habit-tracker-backend/src/main/java/com/habittracker/dao/HabitLogDAO.java
 /home/naia/Proyectos/habit-tracker/habit-tracker-backend/src/main/java/com/habittracker/dao/StatsDAO.java
 /home/naia/Proyectos/habit-tracker/habit-tracker-backend/src/main/java/com/habittracker/dao/UserDAO.java
+/home/naia/Proyectos/habit-tracker/habit-tracker-backend/src/main/java/com/habittracker/dto/DailyStatsDTO.java
 /home/naia/Proyectos/habit-tracker/habit-tracker-backend/src/main/java/com/habittracker/dto/HabitCreateDTO.java
 /home/naia/Proyectos/habit-tracker/habit-tracker-backend/src/main/java/com/habittracker/dto/HabitLogDTO.java
 /home/naia/Proyectos/habit-tracker/habit-tracker-backend/src/main/java/com/habittracker/dto/HabitResponseDTO.java
@@ -23,6 +24,7 @@
 /home/naia/Proyectos/habit-tracker/habit-tracker-backend/src/main/java/com/habittracker/servlet/ExampleServlet.java
 /home/naia/Proyectos/habit-tracker/habit-tracker-backend/src/main/java/com/habittracker/servlet/HabitLogServlet.java
 /home/naia/Proyectos/habit-tracker/habit-tracker-backend/src/main/java/com/habittracker/servlet/HabitServlet.java
+/home/naia/Proyectos/habit-tracker/habit-tracker-backend/src/main/java/com/habittracker/servlet/StatsServlet.java
 /home/naia/Proyectos/habit-tracker/habit-tracker-backend/src/main/java/com/habittracker/util/DatabaseConnection.java
 /home/naia/Proyectos/habit-tracker/habit-tracker-backend/src/main/java/com/habittracker/util/ExampleUtil.java
 /home/naia/Proyectos/habit-tracker/habit-tracker-backend/src/main/java/com/habittracker/util/JsonUtils.java
