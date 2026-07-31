@@ -1,0 +1,82 @@
+<div class="profile">
+  <!-- Cabecera con avatar y nombre -->
+  <div class="perfil-seccion">
+    <div class="perfil-avatar">{{ avatarEmoji }}</div>
+    <h1 class="perfil-nombre">{{ nombre }}</h1>
+    <p class="perfil-subtitulo">Tus hábitos y alarmas 🌿</p>
+  </div>
+
+  <!-- Estado cargando -->
+  <div *ngIf="cargando" class="cargando-seccion">
+    <span class="cargando-emoji">🌀</span>
+    <p>Cargando tu perfil...</p>
+  </div>
+
+  <!-- Estado vacio: no hay habitos -->
+  <div *ngIf="!cargando && habits.length === 0" class="vacio-seccion">
+    <span class="vacio-emoji">🌱</span>
+    <h3 class="vacio-titulo">Aún no tienes hábitos</h3>
+    <p class="vacio-texto">Añade hábitos para poder configurar sus alarmas</p>
+  </div>
+
+  <!-- Lista de habitos con sus recordatorios -->
+  <div *ngIf="!cargando && habits.length > 0" class="lista-seccion">
+    <div *ngFor="let habit of habits" class="habito-tarjeta">
+      <div class="habito-cabecera">
+        <span class="habito-emoji">{{ habit.emoji }}</span>
+        <div class="habito-info">
+          <h3 class="habito-nombre">{{ habit.name }}</h3>
+          <span class="habito-frecuencia">
+            {{ habit.frequency === 'daily' ? 'Diario' : 'Semanal' }}
+          </span>
+        </div>
+        <button
+          class="btn-editar"
+          (click)="editarRecordatorio(habit.id)"
+        >
+          {{ editandoHabitoId === habit.id ? 'Cerrar ✖' : 'Editar 🔔' }}
+        </button>
+      </div>
+
+      <!-- Recordatorios del habito -->
+      <div
+        *ngIf="recordatoriosDe(habit.id).length > 0"
+        class="recordatorios-lista"
+      >
+        <div
+          *ngFor="let recordatorio of recordatoriosDe(habit.id)"
+          class="recordatorio-item"
+          [class.inactiva]="!recordatorio.isActive"
+        >
+          <div class="recordatorio-info">
+            <span class="recordatorio-hora">🕐 {{ recordatorio.reminderTime }}</span>
+            <span class="recordatorio-dias">{{ diasDelRecordatorio(recordatorio.daysOfWeek) }}</span>
+          </div>
+
+          <!-- Toggle on/off -->
+          <label class="toggle">
+            <input
+              type="checkbox"
+              [checked]="recordatorio.isActive"
+              [disabled]="actualizando.has(recordatorio.id)"
+              (change)="toggleAlarma(recordatorio, habit)"
+            />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <p *ngIf="recordatoriosDe(habit.id).length === 0" class="sin-alarmas">
+        Sin alarmas configuradas
+      </p>
+
+      <!-- Editor de recordatorios (componente de la tarea 6.5) -->
+      <div *ngIf="editandoHabitoId === habit.id" class="editor-seccion">
+        <app-habit-reminders
+          [habit]="habit"
+          [userId]="userId"
+        ></app-habit-reminders>
+      </div>
+    </div>
+  </div>
+</div>

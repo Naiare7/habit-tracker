@@ -1,0 +1,84 @@
+<div class="reminders-container">
+  <!-- Estado de carga -->
+  <div *ngIf="cargando" class="reminders-cargando">
+    <span class="cargando-emoji">🌀</span>
+    <p>Cargando tus alarmas...</p>
+  </div>
+
+  <!-- Estado vacio: no hay alarmas -->
+  <div *ngIf="!cargando && recordatorios.length === 0" class="reminders-vacio">
+    <span class="vacio-emoji">🔔</span>
+    <h3 class="vacio-titulo">Aún no tienes alarmas</h3>
+    <p class="vacio-texto">Añade una para no olvidar este hábito 🌱</p>
+  </div>
+
+  <!-- Mensaje de aviso -->
+  <div *ngIf="mensaje" class="mensaje mensaje-aviso">
+    {{ mensaje }}
+  </div>
+
+  <!-- Lista de recordatorios -->
+  <div *ngIf="!cargando && recordatorios.length > 0" class="reminders-lista">
+    <div
+      *ngFor="let recordatorio of recordatorios"
+      class="reminder-item"
+      [class.inactiva]="!recordatorio.isActive"
+    >
+      <div class="reminder-info">
+        <span class="reminder-hora">🕐 {{ recordatorio.reminderTime }}</span>
+        <span class="reminder-dias">{{ diasDelRecordatorio(recordatorio.daysOfWeek) }}</span>
+      </div>
+
+      <!-- Toggle on/off -->
+      <label class="toggle">
+        <input
+          type="checkbox"
+          [checked]="recordatorio.isActive"
+          [disabled]="actualizando.has(recordatorio.id)"
+          (change)="toggleAlarma(recordatorio)"
+        />
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Formulario para anadir una nueva alarma -->
+  <div class="reminders-formulario">
+    <h3 class="form-titulo">Nueva alarma 🔔</h3>
+
+    <div class="campo">
+      <label for="horaAlarma">Hora</label>
+      <input
+        id="horaAlarma"
+        name="horaAlarma"
+        type="time"
+        [(ngModel)]="hora"
+      />
+    </div>
+
+    <div class="campo">
+      <label>Días de la semana</label>
+      <div class="dias-grid">
+        <button
+          *ngFor="let dia of diasSemana"
+          type="button"
+          class="dia-item"
+          [class.seleccionado]="diaSeleccionado(dia.valor)"
+          (click)="toggleDia(dia.valor)"
+          [title]="dia.nombre"
+        >
+          {{ dia.abreviatura }}
+        </button>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="btn-primario"
+      [disabled]="guardando"
+      (click)="agregarAlarma()"
+    >
+      {{ guardando ? 'Guardando...' : 'Añadir alarma ✨' }}
+    </button>
+  </div>
+</div>

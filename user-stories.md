@@ -307,49 +307,49 @@
 
 ### Subtareas
 
-#### 6.1 Crear la tabla de alarmas en PostgreSQL
+#### 6.1 Crear la tabla de alarmas en PostgreSQL ✅
 
-- Crear el script SQL para la tabla `reminders` con los campos: `id`, `habit_id`, `user_id`, `reminder_time` (TIME), `days_of_week` (array: lunes, martes...), `is_active`, `created_at`
-- Comentar el script
+- [x] Crear el script SQL para la tabla `reminders` con los campos: `id`, `habit_id`, `user_id`, `reminder_time` (TIME), `days_of_week` (array: lunes, martes...), `is_active`, `created_at`
+- [x] Comentar el script
 
-#### 6.2 Crear la clase Reminder y su DAO en Java
+#### 6.2 Crear la clase Reminder y su DAO en Java ✅
 
-- Crear `Reminder.java` en el paquete `model`
-- Crear `ReminderDAO.java` en el paquete `dao` con los métodos:
-  - `findByHabitId(int habitId)`
-  - `save(Reminder reminder)`
-  - `update(Reminder reminder)`
-  - `delete(int reminderId)`
-- Comentar todo
+- [x] Crear `Reminder.java` en el paquete `model`
+- [x] Crear `ReminderDAO.java` en el paquete `dao` con los métodos:
+  - [x] `findByHabitId(int habitId)`
+  - [x] `save(Reminder reminder)`
+  - [x] `update(Reminder reminder)`
+  - [x] `delete(int reminderId)`
+- [x] Comentar todo
 
-#### 6.3 Crear el servicio y el Servlet de recordatorios
+#### 6.3 Crear el servicio y el Servlet de recordatorios ✅
 
-- Crear `ReminderService.java` con los métodos: `createReminder`, `getRemindersByHabit`, `updateReminder`, `deleteReminder`
-- Crear `ReminderServlet.java` mapeado a `/api/reminders`
-- Implementar `doGet`, `doPost`, `doPut`, `doDelete`
-- Comentar cada parte
+- [x] Crear `ReminderService.java` con los métodos: `createReminder`, `getRemindersByHabit`, `updateReminder`, `deleteReminder`
+- [x] Crear `ReminderServlet.java` mapeado a `/api/reminders`
+- [x] Implementar `doGet`, `doPost`, `doPut`, `doDelete`
+- [x] Comentar cada parte
 
-#### 6.4 Crear el servicio de notificaciones en Angular
+#### 6.4 Crear el servicio de notificaciones en Angular ✅
 
-- Crear `NotificationService` en `services/notification.service.ts`
-- Solicitar permiso de notificaciones del navegador (`Notification.requestPermission()`)
-- Método `scheduleReminder(habitName, time)` que programa una notificación con la Web Notifications API
-- Comentar cada parte
+- [x] Crear `NotificationService` en `services/notification.service.ts`
+- [x] Solicitar permiso de notificaciones del navegador (`Notification.requestPermission()`)
+- [x] Método `scheduleReminder(habitName, time)` que programa una notificación con la Web Notifications API
+- [x] Comentar cada parte
 
-#### 6.5 Crear el componente de gestión de alarmas
+#### 6.5 Crear el componente de gestión de alarmas ✅
 
-- Crear el componente `components/habits/habit-reminders`
-- Mostrar la lista de recordatorios del hábito seleccionado
-- Formulario para añadir una nueva alarma: hora + días de la semana
-- Toggle para activar/desactivar cada alarma
-- Al activar, llamar al `NotificationService` para programarla en el navegador
+- [x] Crear el componente `components/habits/habit-reminders`
+- [x] Mostrar la lista de recordatorios del hábito seleccionado
+- [x] Formulario para añadir una nueva alarma: hora + días de la semana
+- [x] Toggle para activar/desactivar cada alarma
+- [x] Al activar, llamar al `NotificationService` para programarla en el navegador
 
-#### 6.6 Integrar los recordatorios en la pantalla de perfil
+#### 6.6 Integrar los recordatorios en la pantalla de perfil ✅
 
-- Crear el componente `pages/profile`
-- Mostrar el nombre y avatar del usuario
-- Listar todos los hábitos con su recordatorio configurado y el toggle on/off
-- Botón para editar el recordatorio de cada hábito
+- [x] Crear el componente `pages/profile`
+- [x] Mostrar el nombre y avatar del usuario
+- [x] Listar todos los hábitos con su recordatorio configurado y el toggle on/off
+- [x] Botón para editar el recordatorio de cada hábito
 
 ---
 

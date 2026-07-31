@@ -1,5 +1,6 @@
 com/habittracker/service/UserService.class
 com/habittracker/service/HabitLogService.class
+com/habittracker/service/ReminderService.class
 com/habittracker/dao/StatsDAO.class
 com/habittracker/dto/HabitCreateDTO.class
 com/habittracker/servlet/AuthServlet.class
@@ -8,9 +9,12 @@ com/habittracker/service/StatsService.class
 com/habittracker/servlet/HabitServlet$1.class
 com/habittracker/dto/StreakDTO.class
 com/habittracker/util/JsonUtils.class
+com/habittracker/servlet/ReminderServlet$1.class
+com/habittracker/dao/ReminderDAO.class
 com/habittracker/dao/HabitDAO.class
 com/habittracker/dto/UserLoginDTO.class
 com/habittracker/servlet/HabitLogServlet.class
+com/habittracker/model/Reminder.class
 com/habittracker/service/HabitService.class
 com/habittracker/model/User.class
 com/habittracker/dto/HabitResponseDTO.class
@@ -19,10 +23,12 @@ com/habittracker/dto/HabitLogDTO.class
 com/habittracker/dto/UserRegisterDTO.class
 com/habittracker/dto/UserResponseDTO.class
 com/habittracker/util/DatabaseConnection.class
+com/habittracker/servlet/ReminderServlet.class
 com/habittracker/servlet/HabitServlet.class
 com/habittracker/dto/WeeklyStatsEntryDTO.class
 com/habittracker/dto/DailyStatsDTO.class
 com/habittracker/dao/HabitLogDAO.class
+com/habittracker/dto/ReminderDTO.class
 com/habittracker/dto/HabitUpdateDTO.class
 com/habittracker/dao/UserDAO.class
 com/habittracker/model/HabitLog.class

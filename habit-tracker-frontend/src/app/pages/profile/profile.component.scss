@@ -1,0 +1,296 @@
+.profile {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.perfil-seccion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: #EDE8F5;
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.perfil-avatar {
+  font-size: 64px;
+  line-height: 1;
+  background: white;
+  width: 104px;
+  height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgba(139, 111, 71, 0.12);
+}
+
+.perfil-nombre {
+  font-family: 'Nunito', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #8B6F47;
+  margin: 8px 0 0 0;
+}
+
+.perfil-subtitulo {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  color: #8B6F47;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* Estado cargando */
+.cargando-seccion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.cargando-emoji {
+  font-size: 48px;
+}
+
+.cargando-seccion p {  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  color: #8B6F47;
+  margin-top: 16px;
+}
+
+/* Estado vacio */
+.vacio-seccion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+  background: #FAFAF5;
+  border-radius: 20px;
+  border: 1px solid #E8DDD0;
+  box-shadow: 0 4px 16px rgba(139, 111, 71, 0.12);
+}
+
+.vacio-emoji {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+.vacio-titulo {
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #8B6F47;
+  margin: 0 0 4px 0;
+}
+
+.vacio-texto {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  color: #8B6F47;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* Lista de habitos */
+.lista-seccion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.habito-tarjeta {
+  background: #FAFAF5;
+  border: 1px solid #E8DDD0;
+  border-left: 6px solid #C3B1E1;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(139, 111, 71, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.habito-tarjeta:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 32px rgba(139, 111, 71, 0.18);
+}
+
+.habito-cabecera {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.habito-emoji {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.habito-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.habito-nombre {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #8B6F47;
+  margin: 0;
+}
+
+.habito-frecuencia {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #C3B1E1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-editar {
+  background: #FFF3B0;
+  color: #8B6F47;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter 200ms ease, transform 200ms ease;
+  white-space: nowrap;
+}
+
+.btn-editar:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+
+/* Recordatorios del habito */
+.recordatorios-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recordatorio-item {
+  background: #EDE8F5;
+  border: 1px solid #E8DDD0;
+  border-left: 5px solid #FFB347;
+  border-radius: 14px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  transition: opacity 200ms ease;
+}
+
+.recordatorio-item.inactiva {
+  opacity: 0.55;
+  border-left-color: #E8DDD0;
+}
+
+.recordatorio-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.recordatorio-hora {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #8B6F47;
+}
+
+.recordatorio-dias {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #C3B1E1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sin-alarmas {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  color: #8B6F47;
+  opacity: 0.7;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Toggle on/off */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+  min-width: 52px;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #E8DDD0;
+  border-radius: 999px;
+  transition: background 200ms ease;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 200ms ease;
+}
+
+.toggle input:checked + .toggle-slider {
+  background: #FFB347;
+}
+
+.toggle input:checked + .toggle-slider::before {
+  transform: translateX(24px);
+}
+
+.toggle input:disabled + .toggle-slider {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Editor de recordatorios */
+.editor-seccion {
+  border-top: 1px dashed #E8DDD0;
+  padding-top: 16px;
+}
