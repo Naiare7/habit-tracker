@@ -359,58 +359,58 @@
 
 ### Subtareas
 
-#### 7.1 Crear la tabla de logros en PostgreSQL
+#### 7.1 Crear la tabla de logros en PostgreSQL ✅
 
-- Crear la tabla `achievements` con los campos: `id`, `code` (ej: "streak_7"), `name`, `description`, `emoji`, `condition_type`, `condition_value`
-- Crear la tabla `user_achievements` con los campos: `id`, `user_id`, `achievement_id`, `unlocked_at`
-- Insertar los logros predefinidos: primera semana, racha de 7 días, racha de 30 días, mes perfecto
+- [x] Crear la tabla `achievements` con los campos: `id`, `code` (ej: "streak_7"), `name`, `description`, `emoji`, `condition_type`, `condition_value`
+- [x] Crear la tabla `user_achievements` con los campos: `id`, `user_id`, `achievement_id`, `unlocked_at`
+- [x] Insertar los logros predefinidos: primera semana, racha de 7 días, racha de 30 días, mes perfecto
 
-#### 7.2 Crear las clases de logros y sus DAOs
+#### 7.2 Crear las clases de logros y sus DAOs ✅
 
-- Crear `Achievement.java` y `UserAchievement.java` en el paquete `model`
-- Crear `AchievementDAO.java` con los métodos:
-  - `findAll()` — todos los logros disponibles
-  - `findUnlockedByUserId(int userId)` — logros ya desbloqueados por el usuario
-  - `saveUserAchievement(int userId, int achievementId)` — guardar un logro desbloqueado
-- Comentar todo
+- [x] Crear `Achievement.java` y `UserAchievement.java` en el paquete `model`
+- [x] Crear `AchievementDAO.java` con los métodos:
+  - [x] `findAll()` — todos los logros disponibles
+  - [x] `findUnlockedByUserId(int userId)` — logros ya desbloqueados por el usuario
+  - [x] `saveUserAchievement(int userId, int achievementId)` — guardar un logro desbloqueado
+- [x] Comentar todo
 
-#### 7.3 Crear el servicio de evaluación de logros
+#### 7.3 Crear el servicio de evaluación de logros ✅
 
-- Crear `AchievementService.java`
-- Método `checkAndUnlockAchievements(int userId)` que:
-  1. Obtiene las estadísticas del usuario (rachas, total de hábitos, etc.) usando `StatsDAO`
-  2. Compara con las condiciones de cada logro
-  3. Guarda los logros nuevos con `AchievementDAO`
-  4. Devuelve una lista con los logros recién desbloqueados
-- Llamar a este método desde `HabitLogService` cada vez que se marca un hábito
-- Comentar cada paso
+- [x] Crear `AchievementService.java`
+- [x] Método `checkAndUnlockAchievements(int userId)` que:
+  - [x] Obtiene las estadísticas del usuario (rachas, total de hábitos, etc.) usando `StatsDAO`
+  - [x] Compara con las condiciones de cada logro
+  - [x] Guarda los logros nuevos con `AchievementDAO`
+  - [x] Devuelve una lista con los logros recién desbloqueados
+- [x] Llamar a este método desde `HabitLogService` cada vez que se marca un hábito
+- [x] Comentar cada paso
 
-#### 7.4 Crear el Servlet de logros
+#### 7.4 Crear el Servlet de logros ✅
 
-- Crear `AchievementServlet.java` mapeado a `/api/achievements`
-- `doGet /api/achievements` — devuelve todos los logros con si están desbloqueados o no
-- `doGet /api/achievements/new` — devuelve solo los recién desbloqueados en esta sesión
-- Comentar el Servlet
+- [x] Crear `AchievementServlet.java` mapeado a `/api/achievements`
+- [x] `doGet /api/achievements` — devuelve todos los logros con si están desbloqueados o no
+- [x] `doGet /api/achievements/new` — devuelve solo los recién desbloqueados en esta sesión
+- [x] Comentar el Servlet
 
-#### 7.4 Crear el componente de celebración en Angular
+#### 7.4 Crear el componente de celebración en Angular ✅
 
-- Crear el componente `components/shared/celebration`
-- Recibe un mensaje y un emoji como parámetros
-- Muestra un modal animado con confeti (usar la librería `canvas-confetti`)
-- Se cierra automáticamente a los 3 segundos o al hacer clic
-- Comentar el componente
+- [x] Crear el componente `components/shared/celebration`
+- [x] Recibe un mensaje y un emoji como parámetros
+- [x] Muestra un modal animado con confeti (usar la librería `canvas-confetti`)
+- [x] Se cierra automáticamente a los 3 segundos o al hacer clic
+- [x] Comentar el componente
 
-#### 7.5 Integrar la celebración al marcar un hábito
+#### 7.5 Integrar la celebración al marcar un hábito ✅
 
-- Después de marcar un hábito, llamar al endpoint `GET /api/achievements/new` para ver si se desbloquearon logros
-- Si hay logros nuevos, mostrar el componente de celebración
-- Si es el último hábito del día, mostrar también el mensaje `"¡Meta del día cumplida! 🏆"`
+- [x] Después de marcar un hábito, llamar al endpoint `GET /api/achievements/new` para ver si se desbloquearon logros
+- [x] Si hay logros nuevos, mostrar el componente de celebración
+- [x] Si es el último hábito del día, mostrar también el mensaje `"¡Meta del día cumplida! 🏆"`
 
-#### 7.6 Crear la pantalla de logros
+#### 7.6 Crear la pantalla de logros ✅
 
-- Añadir una sección de logros en la pantalla de estadísticas
-- Mostrar todos los logros disponibles: los desbloqueados en color, los bloqueados en gris con candado
-- Mostrar la fecha en que se desbloqueó cada logro
+- [x] Añadir una sección de logros en la pantalla de estadísticas
+- [x] Mostrar todos los logros disponibles: los desbloqueados en color, los bloqueados en gris con candado
+- [x] Mostrar la fecha en que se desbloqueó cada logro
 
 ---
 

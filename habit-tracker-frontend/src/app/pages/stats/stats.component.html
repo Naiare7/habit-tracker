@@ -65,5 +65,31 @@
         [mes]="mes"
       ></app-habit-calendar>
     </div>
+
+    <!-- Seccion de logros -->
+    <div class="logros-seccion">
+      <h2 class="logros-titulo">Mis logros 🏅</h2>
+      <p class="logros-frase">Cada logro que consigas se queda aquí para siempre ✨</p>
+
+      <div class="logros-grid">
+        <div
+          *ngFor="let logro of logros"
+          class="logro-card"
+          [class.desbloqueado]="logro.unlocked"
+          [class.bloqueado]="!logro.unlocked"
+        >
+          <div class="logro-emojis">
+            <span class="logro-emoji">{{ logro.emoji }}</span>
+            <span *ngIf="!logro.unlocked" class="logro-candado">🔒</span>
+          </div>
+          <h3 class="logro-nombre">{{ logro.name }}</h3>
+          <p class="logro-descripcion">{{ logro.description }}</p>
+          <p *ngIf="logro.unlocked" class="logro-fecha">
+            Desbloqueado el {{ formatearFecha(logro.unlockedAt) }}
+          </p>
+          <p *ngIf="!logro.unlocked" class="logro-bloqueado">Sigue así, ¡lo conseguirás!</p>
+        </div>
+      </div>
+    </div>
   </ng-container>
 </div>

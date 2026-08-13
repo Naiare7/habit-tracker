@@ -1,0 +1,7 @@
+<div class="celebration-overlay" *ngIf="visible" (click)="cerrar()">
+  <div class="celebration-card" (click)="cerrar()">
+    <canvas #confettiCanvas class="confetti-canvas"></canvas>
+    <div class="celebration-emoji">{{ emoji }}</div>
+    <p class="celebration-mensaje">{{ mensaje }}</p>
+  </div>
+</div>

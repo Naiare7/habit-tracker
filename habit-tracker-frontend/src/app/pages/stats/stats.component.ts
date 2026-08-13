@@ -1,25 +1,28 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { forkJoin } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { StatsService } from '../../services/stats.service';
 import { HabitService } from '../../services/habit.service';
+import { AchievementService } from '../../services/achievement.service';
 import { WeeklyChartComponent } from '../../components/stats/weekly-chart.component';
 import { MonthlyChartComponent } from '../../components/stats/monthly-chart.component';
 import { HabitCalendarComponent } from '../../components/stats/habit-calendar.component';
 import { WeeklyStatsEntry, MonthlyStats, DailyStats } from '../../models/stats.model';
 import { Habit } from '../../models/habit.model';
+import { Achievement } from '../../models/achievement.model';
 
 /**
  * Pantalla de estadisticas del usuario.
  * Compone el grafico semanal, el grafico mensual y el calendario de habitos,
  * con un selector para alternar entre la vista de semana y la de mes.
- * Tambien muestra la racha actual del habito mas largo.
+ * Tambien muestra la racha actual del habito mas largo y todos los logros
+ * con su estado de desbloqueo.
  */
 @Component({
   selector: 'app-stats',
   standalone: true,
-  imports: [NgClass, NgIf, WeeklyChartComponent, MonthlyChartComponent, HabitCalendarComponent],
+  imports: [NgClass, NgFor, NgIf, WeeklyChartComponent, MonthlyChartComponent, HabitCalendarComponent],
   templateUrl: './stats.component.html',
   styleUrl: './stats.component.scss'
 })
@@ -27,6 +30,7 @@ export class StatsComponent implements OnInit {
   private authService = inject(AuthService);
   private statsService = inject(StatsService);
   private habitService = inject(HabitService);
+  private achievementService = inject(AchievementService);
 
   /** Vista seleccionada en el selector (semana o mes) */
   vista: 'semana' | 'mes' = 'semana';
@@ -39,6 +43,9 @@ export class StatsComponent implements OnInit {
 
   /** Datos diarios del mes actual para el calendario */
   datosCalendario: DailyStats[] = [];
+
+  /** Logros del usuario con su estado de desbloqueo */
+  logros: Achievement[] = [];
 
   /** Anho del mes actual */
   anho: number = new Date().getFullYear();
@@ -103,7 +110,39 @@ export class StatsComponent implements OnInit {
       }
     });
 
+    this.cargarLogros(userId);
     this.cargarRachaMasLarga(userId);
+  }
+
+  /**
+   * Carga todos los logros del usuario con su estado de desbloqueo.
+   * @param userId - ID del usuario logueado
+   */
+  private cargarLogros(userId: number): void {
+    this.achievementService.getAll(userId).subscribe({
+      next: (logros) => {
+        this.logros = logros;
+      },
+      error: () => {
+        this.logros = [];
+      }
+    });
+  }
+
+  /**
+   * Convierte la fecha de desbloqueo a un formato legible en espanol.
+   * @param unlockedAt - Fecha de desbloqueo en formato del backend (puede ser null)
+   * @returns La fecha formateada o cadena vacia si no hay fecha
+   */
+  formatearFecha(unlockedAt: string | null): string {
+    if (!unlockedAt) {
+      return '';
+    }
+    return new Date(unlockedAt).toLocaleDateString('es-ES', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
   }
 
   /**

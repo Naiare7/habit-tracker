@@ -1,7 +1,9 @@
-import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, inject } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { Habit } from '../../models/habit.model';
 import { HabitService } from '../../services/habit.service';
+import { AchievementService } from '../../services/achievement.service';
+import { CelebrationComponent } from '../shared/celebration/celebration.component';
 
 /**
  * Componente que muestra una lista de tarjetas de habitos.
@@ -9,16 +11,19 @@ import { HabitService } from '../../services/habit.service';
  * con un boton para marcar/desmarcar como completado,
  * y botones para editar y eliminar.
  * Si no hay habitos, muestra un mensaje motivador.
+ * Al completar un habito consulta los logros recien desbloqueados
+ * y muestra el modal de celebracion (logros o meta del dia cumplida).
  */
 @Component({
   selector: 'app-habit-list',
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [NgFor, NgIf, CelebrationComponent],
   templateUrl: './habit-list.component.html',
   styleUrl: './habit-list.component.scss'
 })
 export class HabitListComponent {
   private habitService = inject(HabitService);
+  private achievementService = inject(AchievementService);
 
   /** Lista de habitos a mostrar */
   @Input() habits: Habit[] = [];
@@ -53,9 +58,17 @@ export class HabitListComponent {
   /** Mensaje de celebracion visible */
   mensajeCelebracion: string | null = null;
 
+  /** Referencia al modal de celebracion para mostrar los logros nuevos */
+  @ViewChild('celebracion') celebracionRef!: CelebrationComponent;
+
+  /** Cola de celebraciones pendientes de mostrar */
+  private colaCelebraciones: { mensaje: string; emoji: string }[] = [];
+
   /**
    * Marca o desmarca un habito como completado.
    * Llama al endpoint y actualiza el estado visual.
+   * Al completar, consulta los logros recien desbloqueados y muestra
+   * la celebracion correspondiente.
    * @param habit - El habito a marcar/desmarcar
    */
   toggleHabit(habit: Habit): void {
@@ -74,6 +87,7 @@ export class HabitListComponent {
           if (nuevoEstado) {
             this.completados.add(habit.id);
             this.mostrarCelebracion(habit);
+            this.consultarLogrosNuevos();
           } else {
             this.completados.delete(habit.id);
           }
@@ -98,6 +112,60 @@ export class HabitListComponent {
       this.habitoCelebradoId = null;
       this.mensajeCelebracion = null;
     }, 2000);
+  }
+
+  /**
+   * Consulta los logros recien desbloqueados en esta sesion y los encola
+   * para mostrarlos en el modal de celebracion. Si ademas este era el
+   * ultimo habito del dia, encola tambien el mensaje de meta cumplida.
+   */
+  private consultarLogrosNuevos(): void {
+    this.achievementService.getNewlyUnlocked().subscribe({
+      next: (logros) => {
+        for (const logro of logros) {
+          this.encolarCelebracion(logro.name, logro.emoji);
+        }
+
+        if (this.esUltimoHabitoDelDia()) {
+          this.encolarCelebracion('¡Meta del día cumplida!', '🏆');
+        }
+
+        this.mostrarSiguienteCelebracion();
+      }
+    });
+  }
+
+  /**
+   * Comprueba si con el habito recien marcado ya estan completados todos
+   * los habitos del dia.
+   * @returns true si todos los habitos estan completados
+   */
+  private esUltimoHabitoDelDia(): boolean {
+    return this.completados.size === this.habits.length;
+  }
+
+  /**
+   * Añade una celebracion a la cola de pendientes.
+   * @param mensaje - Mensaje que se mostrara en el modal
+   * @param emoji - Emoji grande del modal
+   */
+  private encolarCelebracion(mensaje: string, emoji: string): void {
+    this.colaCelebraciones.push({ mensaje, emoji });
+  }
+
+  /**
+   * Muestra la siguiente celebracion de la cola, si queda alguna.
+   * Lo invoca el template cuando se cierra el modal de celebracion.
+   */
+  mostrarSiguienteCelebracion(): void {
+    const siguiente = this.colaCelebraciones.shift();
+    if (!siguiente) {
+      return;
+    }
+
+    this.celebracionRef.mensaje = siguiente.mensaje;
+    this.celebracionRef.emoji = siguiente.emoji;
+    this.celebracionRef.abrir();
   }
 
   /**
