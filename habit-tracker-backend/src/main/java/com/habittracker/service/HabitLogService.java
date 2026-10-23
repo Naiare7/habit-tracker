@@ -15,9 +15,11 @@ import java.util.stream.Collectors;
 public class HabitLogService {
 
     private final HabitLogDAO habitLogDAO;
+    private final AchievementService achievementService;
 
     public HabitLogService() {
         this.habitLogDAO = new HabitLogDAO();
+        this.achievementService = new AchievementService();
     }
 
     /**
@@ -43,6 +45,15 @@ public class HabitLogService {
 
         if (logGuardado == null) {
             throw new RuntimeException("Error al guardar el registro del habito");
+        }
+
+        // Evalua los logros solo cuando el habito se marca como completado
+        if (completed) {
+            try {
+                achievementService.checkAndUnlockAchievements(userId);
+            } catch (Exception e) {
+                System.err.println("Error al evaluar logros del usuario: " + e.getMessage());
+            }
         }
 
         return convertirADTO(logGuardado);

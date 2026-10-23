@@ -374,16 +374,16 @@
   - [x] `saveUserAchievement(int userId, int achievementId)` — guardar un logro desbloqueado
 - [x] Comentar todo
 
-#### 7.3 Crear el servicio de evaluación de logros
+#### 7.3 Crear el servicio de evaluación de logros ✅
 
-- Crear `AchievementService.java`
-- Método `checkAndUnlockAchievements(int userId)` que:
-  1. Obtiene las estadísticas del usuario (rachas, total de hábitos, etc.) usando `StatsDAO`
-  2. Compara con las condiciones de cada logro
-  3. Guarda los logros nuevos con `AchievementDAO`
-  4. Devuelve una lista con los logros recién desbloqueados
-- Llamar a este método desde `HabitLogService` cada vez que se marca un hábito
-- Comentar cada paso
+- [x] Crear `AchievementService.java`
+- [x] Método `checkAndUnlockAchievements(int userId)` que:
+  1. [x] Obtiene las estadísticas del usuario (rachas, total de hábitos, etc.) usando `StatsDAO`
+  2. [x] Compara con las condiciones de cada logro
+  3. [x] Guarda los logros nuevos con `AchievementDAO`
+  4. [x] Devuelve una lista con los logros recién desbloqueados
+- [x] Llamar a este método desde `HabitLogService` cada vez que se marca un hábito
+- [x] Comentar cada paso
 
 #### 7.4 Crear el Servlet de logros
 
