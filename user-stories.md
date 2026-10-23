@@ -365,14 +365,14 @@
 - [x] Crear la tabla `user_achievements` con los campos: `id`, `user_id`, `achievement_id`, `unlocked_at`
 - [x] Insertar los logros predefinidos: primera semana, racha de 7 días, racha de 30 días, mes perfecto
 
-#### 7.2 Crear las clases de logros y sus DAOs
+#### 7.2 Crear las clases de logros y sus DAOs ✅
 
-- Crear `Achievement.java` y `UserAchievement.java` en el paquete `model`
-- Crear `AchievementDAO.java` con los métodos:
-  - `findAll()` — todos los logros disponibles
-  - `findUnlockedByUserId(int userId)` — logros ya desbloqueados por el usuario
-  - `saveUserAchievement(int userId, int achievementId)` — guardar un logro desbloqueado
-- Comentar todo
+- [x] Crear `Achievement.java` y `UserAchievement.java` en el paquete `model`
+- [x] Crear `AchievementDAO.java` con los métodos:
+  - [x] `findAll()` — todos los logros disponibles
+  - [x] `findUnlockedByUserId(int userId)` — logros ya desbloqueados por el usuario
+  - [x] `saveUserAchievement(int userId, int achievementId)` — guardar un logro desbloqueado
+- [x] Comentar todo
 
 #### 7.3 Crear el servicio de evaluación de logros
 
