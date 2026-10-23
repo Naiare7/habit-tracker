@@ -385,12 +385,12 @@
 - [x] Llamar a este método desde `HabitLogService` cada vez que se marca un hábito
 - [x] Comentar cada paso
 
-#### 7.4 Crear el Servlet de logros
+#### 7.4 Crear el Servlet de logros ✅
 
-- Crear `AchievementServlet.java` mapeado a `/api/achievements`
-- `doGet /api/achievements` — devuelve todos los logros con si están desbloqueados o no
-- `doGet /api/achievements/new` — devuelve solo los recién desbloqueados en esta sesión
-- Comentar el Servlet
+- [x] Crear `AchievementServlet.java` mapeado a `/api/achievements`
+- [x] `doGet /api/achievements` — devuelve todos los logros con si están desbloqueados o no
+- [x] `doGet /api/achievements/new` — devuelve solo los recién desbloqueados en esta sesión
+- [x] Comentar el Servlet
 
 #### 7.4 Crear el componente de celebración en Angular
 
