@@ -1,0 +1,7 @@
+<div class="celebracion-overlay" (click)="cerrar()">
+  <div class="celebracion-modal" (click)="$event.stopPropagation()">
+    <div class="celebracion-emoji">{{ emoji }}</div>
+    <p class="celebracion-mensaje">{{ mensaje }}</p>
+    <button class="celebracion-boton" (click)="cerrar()">¡Genial!</button>
+  </div>
+</div>

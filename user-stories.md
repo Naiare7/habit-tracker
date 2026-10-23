@@ -392,13 +392,13 @@
 - [x] `doGet /api/achievements/new` — devuelve solo los recién desbloqueados en esta sesión
 - [x] Comentar el Servlet
 
-#### 7.4 Crear el componente de celebración en Angular
+#### 7.4 Crear el componente de celebración en Angular ✅
 
-- Crear el componente `components/shared/celebration`
-- Recibe un mensaje y un emoji como parámetros
-- Muestra un modal animado con confeti (usar la librería `canvas-confetti`)
-- Se cierra automáticamente a los 3 segundos o al hacer clic
-- Comentar el componente
+- [x] Crear el componente `components/shared/celebration`
+- [x] Recibe un mensaje y un emoji como parámetros
+- [x] Muestra un modal animado con confeti (usar la librería `canvas-confetti`)
+- [x] Se cierra automáticamente a los 3 segundos o al hacer clic
+- [x] Comentar el componente
 
 #### 7.5 Integrar la celebración al marcar un hábito
 

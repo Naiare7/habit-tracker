@@ -1,0 +1,101 @@
+/* Estilos del componente de celebracion siguiendo la guia de estilo cozy */
+.celebracion-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(139, 111, 71, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 200ms ease;
+}
+
+.celebracion-modal {
+  background: #FAFAF5;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(139, 111, 71, 0.18);
+  padding: 40px 32px;
+  max-width: 320px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  animation: aparecerModal 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.celebracion-emoji {
+  font-size: 64px;
+  line-height: 1;
+  animation: reboteEmoji 400ms ease-in-out;
+}
+
+.celebracion-mensaje {
+  color: #8B6F47;
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.celebracion-boton {
+  background: #FFB347;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 32px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(139, 111, 71, 0.12);
+  transition: filter 200ms ease;
+}
+
+.celebracion-boton:hover {
+  filter: brightness(0.95);
+}
+
+.celebracion-boton:active {
+  filter: brightness(0.9);
+}
+
+/* Animacion de aparicion del overlay */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animacion de aparicion del modal con efecto bounce */
+@keyframes aparecerModal {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animacion de rebote del emoji */
+@keyframes reboteEmoji {
+  0% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
