@@ -359,11 +359,11 @@
 
 ### Subtareas
 
-#### 7.1 Crear la tabla de logros en PostgreSQL
+#### 7.1 Crear la tabla de logros en PostgreSQL ✅
 
-- Crear la tabla `achievements` con los campos: `id`, `code` (ej: "streak_7"), `name`, `description`, `emoji`, `condition_type`, `condition_value`
-- Crear la tabla `user_achievements` con los campos: `id`, `user_id`, `achievement_id`, `unlocked_at`
-- Insertar los logros predefinidos: primera semana, racha de 7 días, racha de 30 días, mes perfecto
+- [x] Crear la tabla `achievements` con los campos: `id`, `code` (ej: "streak_7"), `name`, `description`, `emoji`, `condition_type`, `condition_value`
+- [x] Crear la tabla `user_achievements` con los campos: `id`, `user_id`, `achievement_id`, `unlocked_at`
+- [x] Insertar los logros predefinidos: primera semana, racha de 7 días, racha de 30 días, mes perfecto
 
 #### 7.2 Crear las clases de logros y sus DAOs
 
